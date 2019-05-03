@@ -8,13 +8,13 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.use(express.json());
-// Serve up static assets (usually on heroku)
+// Serve up static assets 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
 
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googleBooks")
+mongoose.connect(process.env.MONGODB_URI || "")
     .then(() => {
         console.log("🗄 ==> Successfully connected to mongoDB.");
     })
