@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://kelsey123:kelsey123@cluster0-k22l1.mongodb.net/test?retryWrites=true",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "49594c988ce82ae02e3b",
+    "githubSecret": "c63c2fe0a0a8fd151e19b8848000e079268ac71e"
+}

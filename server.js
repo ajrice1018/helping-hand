@@ -1,29 +1,25 @@
-require('dotenv').config();
-const express = require("express");
+const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-// Define middleware here
-app.use(express.urlencoded({
-    extended: true
-}));
+// Connect database
+const mongoose = require('mongoose');
+const config = require('config');
+const db = config.get('mongoURI');
+
+// Connect to the Mongo DB
+mongoose.connect(db, {useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
+
+// Init Middleware
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// Serve up static assets 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-}
 
-const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGODB_URI || "")
-    .then(() => {
-        console.log("🗄 ==> Successfully connected to mongoDB.");
-    })
-    .catch((err) => {
-        console.log(`Error connecting to mongoDB: ${err}`);
-    });
+app.get('/', (req, res) => res.send('API Running'));
 
-require("./routes/api-routes")(app);
+// Define Routes
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/profile', require('./routes/api/profile'));
 
-app.listen(PORT, () => {
-    console.log(`🌎 ==> API server now on port ${PORT}!`);
-});
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`server started on port ${PORT}`));
