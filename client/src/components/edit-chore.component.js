@@ -21,7 +21,7 @@ export default class EditChore extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/chores/'+this.props.match.params.id)
+        axios.get('http://localhost:5000/chore/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     chore_description: response.data.chore_description,
@@ -67,7 +67,7 @@ export default class EditChore extends Component {
             chore_priority: this.state.chore_priority,
             chore_completed: this.state.chore_completed
         };
-        axios.post('http://localhost:4000/chores/update/'+this.props.match.params.id, obj)
+        axios.post('http://localhost:5000/chore/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 
         this.props.history.push('/');
