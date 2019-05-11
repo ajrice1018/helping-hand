@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from "axios";
 
 const Chore = props => (
     <tr>
@@ -21,7 +21,7 @@ export default class ChoresList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/chores/')
+        axios.get('http://localhost:5000/chore')
             .then(response => {
                 this.setState({chores: response.data});
             })
@@ -31,7 +31,7 @@ export default class ChoresList extends Component {
     }
 
     componentDidUpdate() {
-        axios.get('http://localhost:5000/chores/')
+        axios.get('http://localhost:5000/chore')
         .then(response => {
             this.setState({chores: response.data});
         })

@@ -11,8 +11,19 @@ let Chore = new Schema({
     chore_priority: {
         type: String
     },
+    
     chore_completed: {
         type: Boolean
+    },
+    location: {
+       type: {
+           type: String,
+           enum :['Point'],
+           
+       },
+       coordinates:{
+           type:[Number],
+        }
     }
 });
 

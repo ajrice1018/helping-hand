@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CreateChore from "./components/create-chore.component";
 import EditChore from "./components/edit-chore.component";
 import ChoresList from "./components/chores-list.component";
-import Map from './components/Maps.js';
+import MapView from './pages/MapView';
 
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
                   <Link to="/create" className="nav-link">Create Chore</Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/Map" className="nav-link">Map</Link>
+                  <Link to="/map" className="nav-link">Map</Link>
                 </li>
               </ul>
             </div>
@@ -35,7 +35,7 @@ class App extends Component {
           <Route path="/" exact component={ChoresList} />
           <Route path="/edit/:id" component={EditChore} />
           <Route path="/create" component={CreateChore} />
-          <Route path="/map" component={Map}/>
+          <Route path="/map" component={MapView}/>
         </div>
       </Router>
     );

@@ -1,10 +1,10 @@
 const express = require('express');
 const config = require('config');
-const router = express.Router();
+const choresRouter = express.Router();
 
 const Chore = require('../../models/Chores');
 
-router.route('/').get(function(req, res) {
+choresRouter.route('/').get(function(req, res) {
     Chore.find(function(err, chores) {
         if (err) {
             console.log(err);
@@ -14,26 +14,28 @@ router.route('/').get(function(req, res) {
     });
 });
 
-router.route('/:id').get(function(req, res) {
+choresRouter.route(':id').get(function(req, res) {
     let id = req.params.id;
     Chore.findById(id, function(err, chore) {
         res.json(chore);
     });
 });
 
-router.route('/add').post(function(req, res) {
-    let chore = new Chore(req.body);
-    chore.save()
-        .then(chore => {
-            res.status(200).json({'chore': 'chore added successfully'});
-        })
-        .catch(err => {
-            res.status(400).send('adding new chore failed');
-        });
+choresRouter.route('/add').post(function(req, res) {
+    // let chore = new Chore(req.body);
+    // chore.save()
+    //     .then(chore => {
+    //         res.status(200).json({'chore': 'chore added successfully'});
+    //     })
+    //     .catch(err => {
+    //         res.status(400).send('adding new chore failed');
+    //     });
+    console.log(req.body)
+    res.json();
 });
 
-router.route('/update/:id').post(function(req, res) {
-    chore.findById(req.params.id, function(err, chore) {
+choresRouter.route('/update/:id').post(function(req, res) {
+    Chore.findById(req.params.id, function(err, chore) {
         if (!chore)
             res.status(404).send('data is not found');
         else
@@ -41,7 +43,7 @@ router.route('/update/:id').post(function(req, res) {
             chore.chore_responsible = req.body.chore_responsible;
             chore.chore_priority = req.body.chore_priority;
             chore.chore_completed = req.body.chore_completed;
-
+            chore.location = requ.body.location;
             chore.save().then(chore => {
                 res.json('chore updated');
             })
@@ -51,4 +53,4 @@ router.route('/update/:id').post(function(req, res) {
     });
 });
 
-module.exports = router;
+module.exports = choresRouter;
