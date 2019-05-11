@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const config = require('config');
 const {check, validationResult} = require('express-validator/check');
 
-const User = require('../../models/User');
+const User = require('../../models/VolunteerUserSchema');
 
 // @route   GET api/users 
 // @desc    Register user 
@@ -29,7 +29,7 @@ router.post('/', [
 
     try {
         // See if the user exists
-        let user = await User.findOne({email});
+        let user = await VolunteerUserSchema.findOne({email});
         if (user) {
             return res
                 .status(400)
@@ -43,7 +43,7 @@ router.post('/', [
         };
 
         // creates a new user
-        user = new User({firstName, lastName, email, password});
+        user = new VolunteerUserSchema({firstName, lastName, email, password});
         // Encrypt password using bcrypt
         const salt = await bcrypt.genSalt(10);
 
