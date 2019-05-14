@@ -6,10 +6,11 @@ const Chore = props => (
     <tr>
         <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_description}</td>
         <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_responsible}</td>
-        <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_address}</td>
+        <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_address[0].formattedAddress}</td>
         <td>
             <Link to={"/edit/"+props.chore._id}>Edit</Link>
-        </td>
+        </td> 
+       
     </tr>
 )
 

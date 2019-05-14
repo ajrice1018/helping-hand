@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import ChoreList from './chores-list.component';
 
 export default class CreateChore extends Component {
    
@@ -106,7 +107,9 @@ export default class CreateChore extends Component {
                     </div>
                     <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>Submit</button>
                 </form>
+                <ChoreList />
             </div>
+            
         )
     }
 }
