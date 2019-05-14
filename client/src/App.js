@@ -11,6 +11,13 @@ import MapView from './pages/MapView';
 class App extends Component {
   render() {
     return (
+
+    //   <Fragment>
+    //     <Navbar />
+    //     <Landing />
+    //  </Fragment>
+
+    
       <Router>
         <div className="container">
           
