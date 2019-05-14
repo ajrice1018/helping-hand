@@ -18,7 +18,7 @@ const ChoresMap = compose(
     center={{ lat: props.currentLocation.lat, lng: props.currentLocation.lng }}
   >
     {props.isMarkerShown && <Marker position={{ lat: props.currentLocation.lat, lng: props.currentLocation.lng }} onClick={props.onMarkerClick} />}
-    {props.isMarkerShown && <ChoreMarker position={{lat: props.choreLocation.chore_address[0].latitude, lng:props.choreLocation.chore_address[0].longitude}} onClick={props.onMarkerClick}/>}
+    
   </GoogleMap>
 )
 
