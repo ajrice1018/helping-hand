@@ -43,12 +43,10 @@ choresRouter.route('/add').post(function(req, res) {
         });
         chore.save()
         .then(chore => {
-            console.log(chore);
             res.status(200).json({'chore': 'chore added successfully'});
         })
         .catch(err => {
             res.status(400).send(err);
-            console.log(err)
         });
          
     })
