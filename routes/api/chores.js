@@ -1,8 +1,18 @@
 const express = require('express');
 const config = require('config');
+const NodeGeocoder = require('node-geocoder');
 const choresRouter = express.Router();
 
 const Chore = require('../../models/Chores');
+
+const options = {
+    provider: 'google',
+    httpAdapter: 'https',
+    apiKey: 'AIzaSyDPGB8rFZ4Yx-tKuwdgbTWFjAG9eRMaAEw',
+    formatter: null
+};
+
+const geocoder = NodeGeocoder(options);
 
 choresRouter.route('/').get(function(req, res) {
     Chore.find(function(err, chores) {
@@ -22,17 +32,33 @@ choresRouter.route(':id').get(function(req, res) {
 });
 
 choresRouter.route('/add').post(function(req, res) {
-    // let chore = new Chore(req.body);
-    // chore.save()
-    //     .then(chore => {
-    //         res.status(200).json({'chore': 'chore added successfully'});
-    //     })
-    //     .catch(err => {
-    //         res.status(400).send('adding new chore failed');
-    //     });
-    console.log(req.body)
-    res.json();
+    
+    geocoder.geocode(req.body.chore_address)
+        .then(function(addressLocation) {
+        let chore = new Chore({
+           chore_description: req.body.chore_description,
+           chore_responsible: req.body.chore_responsible,
+           chore_address: addressLocation,
+           chore_completed: req.body.chore_completed 
+        });
+        chore.save()
+        .then(chore => {
+            console.log(chore);
+            res.status(200).json({'chore': 'chore added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send(err);
+            console.log(err)
+        });
+         
+    })
+        
 });
+    
+    
+    
+    
+
 
 choresRouter.route('/update/:id').post(function(req, res) {
     Chore.findById(req.params.id, function(err, chore) {
@@ -41,9 +67,8 @@ choresRouter.route('/update/:id').post(function(req, res) {
         else
             chore.chore_description = req.body.chore_description;
             chore.chore_responsible = req.body.chore_responsible;
-            chore.chore_priority = req.body.chore_priority;
             chore.chore_completed = req.body.chore_completed;
-            chore.location = requ.body.location;
+            chore.chore_address = req.body.chore_address;
             chore.save().then(chore => {
                 res.json('chore updated');
             })
