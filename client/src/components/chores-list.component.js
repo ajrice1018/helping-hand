@@ -6,7 +6,7 @@ const Chore = props => (
     <tr>
         <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_description}</td>
         <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_responsible}</td>
-        <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_priority}</td>
+        <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_address}</td>
         <td>
             <Link to={"/edit/"+props.chore._id}>Edit</Link>
         </td>
@@ -21,7 +21,7 @@ export default class ChoresList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/chore')
+        axios.get('/chore')
             .then(response => {
                 this.setState({chores: response.data});
             })
@@ -31,7 +31,7 @@ export default class ChoresList extends Component {
     }
 
     componentDidUpdate() {
-        axios.get('http://localhost:5000/chore')
+        axios.get('/chore')
         .then(response => {
             this.setState({chores: response.data});
         })
@@ -55,7 +55,7 @@ export default class ChoresList extends Component {
                         <tr>
                             <th>Description</th>
                             <th>Responsible</th>
-                            <th>Priority</th>
+                            <th>Address</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
