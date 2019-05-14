@@ -8,13 +8,15 @@ const ProfileSchema = new Schema({
         ref: 'user'
     },
     firstName: {
-        type: String,
-        required: true
+        type: String
+        // ,
+        // required: true
 
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
+        // ,
+        // required: true
 
     },
     email: {
@@ -22,8 +24,9 @@ const ProfileSchema = new Schema({
         required: true
     },
     phoneNumber: {
-        type: String,
-        required: true
+        type: String
+        // ,
+        // required: true
     },
     date: {
         type: Date,

@@ -14,7 +14,7 @@ router.get('/me', auth, async(req, res) => {
     try {
         const profile = await Profile
             .findOne({user: req.user.id})
-            .populate('user', ['name']);
+            .populate('user', ['firstName']);
         if (!profile) {
             return res
                 .status(400)
@@ -31,17 +31,21 @@ router.get('/me', auth, async(req, res) => {
     }
 });
 
+
+
+
+
+
 // @route   POST api/profile 
 // @desc    Create or update a user profile 
 // @access  Private
 router.post('/', [
     auth,
     [
-        check('email', 'Please include a valid email').isEmail(),
-        // check('email', 'E-mail is required')
-        //     .not()
-        //     .isEmpty(),
-        check('phoneNumber', 'Phone number is required')
+        check('firstName', 'First Name is required')
+            .not()
+            .isEmpty(),
+        check('lastName', 'Last name is required')
             .not()
             .isEmpty()
     ]
@@ -55,21 +59,55 @@ router.post('/', [
             });
     }
     const {
+        company,
+        website,
         location,
         bio,
+        status,
+        githubusername,
+        skills,
+        youtube,
+        facebook,
+        twitter,
+        instagram,
+        linkedin
     } = req.body;
 
     // Build Profile Object
     const profileFields = {};
 
     profileFields.user = req.user.id;
-  
+    if (company) 
+        profileFields.company = company;
+    if (website) 
+        profileFields.website = website;
     if (location) 
         profileFields.location = location;
     if (bio) 
         profileFields.bio = bio;
+    if (status) 
+        profileFields.status = status;
+    if (githubusername) 
+        profileFields.githubusername = githubusername;
+    if (skills) {
+        profileFields.skills = skills
+            .split(',')
+            .map(skill => skill.trim());
+    }
 
-
+    // Build Social Object
+    profileFields.social = {};
+    if (youtube) 
+        profileFields.social.youtube = youtube;
+    if (facebook) 
+        profileFields.social.facebook = facebook;
+    if (twitter) 
+        profileFields.social.twitter = twitter;
+    if (instagram) 
+        profileFields.social.instagram = instagram;
+    if (linkedin) 
+        profileFields.social.linkedin = linkedin;
+    
     try {
         let profile = await Profile.findOne({user: req.user.id});
 
@@ -96,6 +134,15 @@ router.post('/', [
             .send('Server Error');
     }
 })
+
+
+
+
+
+
+
+
+
 
 // @route   Get api/profile 
 // @desc    Get all profiles 
@@ -125,7 +172,7 @@ router.get('/user/:user_id', async(req, res) => {
         // collection (defined in the model)
         const profile = await Profile
             .findOne({user: req.params.user_id})
-            .populate('user', ['firstName']);
+            .populate('user', ['firstname']);
         // if no profile is created send error
         if (!profile) 
             return res.status(400).json({msg: "Profile not found"});
