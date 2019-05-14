@@ -1,5 +1,5 @@
 /* Global Styles */
-/* :root {
+:root {
   --primary-color: #17a2b8;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
@@ -32,7 +32,7 @@ ul {
 
 img {
   width: 100%;
-} */
+}
 
 /* Utilities */
 .container {
@@ -333,7 +333,7 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./img/showcase.jpg') no-repeat center center/cover;
+  background: url('../img/showcase.jpg') no-repeat center center/cover;
   height: 100vh;
 }
 
