@@ -37,10 +37,10 @@ router.get('/me', auth, async(req, res) => {
 router.post('/', [
     auth,
     [
-        check('email', 'Status is required')
+        check('email', 'E-mail is required')
             .not()
             .isEmpty(),
-        check('phoneNumber', 'Skills is required')
+        check('phoneNumber', 'Phone number is required')
             .not()
             .isEmpty()
     ]
