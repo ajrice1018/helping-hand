@@ -30,13 +30,13 @@ const Navbar = () => {
                     </div>
                 </nav>
 
-            </div>
 
             <Route path="/" exact component={Landing}/>
             {/* <Route path="/" exact component={ChoresList}/> */}
             <Route path="/edit/:id" component={EditChore}/>
             <Route path="/create" component={CreateChore}/> 
             {/* <Route path="/map" component={MapView}/>  */}
+            </div>
 
         </Router>
     )
