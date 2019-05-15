@@ -5,7 +5,7 @@ import CreateChore from "./create-chore.component";
 import EditChore from "./edit-chore.component";
 import ChoresList from "./chores-list.component";
 import Landing from './Landing';
-// import MapView from '../pages/MapView';
+import MapView from '../pages/MapView';
 
 const Navbar = () => {
     return (
@@ -35,7 +35,7 @@ const Navbar = () => {
             {/* <Route path="/" exact component={ChoresList}/> */}
             <Route path="/edit/:id" component={EditChore}/>
             <Route path="/create" component={CreateChore}/> 
-            {/* <Route path="/map" component={MapView}/>  */}
+            <Route path="/map" component={MapView}/> 
             </div>
 
         </Router>
