@@ -13,8 +13,8 @@ const User = require('../../models/VolunteerUser');
 router.get('/me', auth, async(req, res) => {
     try {
         const profile = await Profile
-            .findOne({user: req.user.id})
-            .populate('user', ['firstName']);
+            .findOne({uservolunteerUser: req.user.id})
+            .populate('volunteerUser', ['firstName']);
         if (!profile) {
             return res
                 .status(400)
