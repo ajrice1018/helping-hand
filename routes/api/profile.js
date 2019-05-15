@@ -60,17 +60,11 @@ router.post('/', [
     }
     const {
         email,
-        website,
-        location,
+        firstName,
+        lastName,
         bio,
-        status,
-        githubusername,
-        skills,
-        youtube,
-        facebook,
-        twitter,
-        instagram,
-        linkedin
+        location,
+        phoneNumber,
     } = req.body;
 
     // Build Profile Object
@@ -79,35 +73,17 @@ router.post('/', [
     profileFields.user = req.user.id;
     if (email) 
         profileFields.email = email;
-    if (website) 
-        profileFields.website = website;
+    if (firstName) 
+        profileFields.firstName = firstName;
+    if (lastName) 
+        profileFields.lastName = lastName;
+    if (bio) 
+        profileFields.bio = bio;
     if (location) 
         profileFields.location = location;
     if (bio) 
-        profileFields.bio = bio;
-    if (status) 
-        profileFields.status = status;
-    if (githubusername) 
-        profileFields.githubusername = githubusername;
-    if (skills) {
-        profileFields.skills = skills
-            .split(',')
-            .map(skill => skill.trim());
-    }
-
-    // Build Social Object
-    profileFields.social = {};
-    if (youtube) 
-        profileFields.social.youtube = youtube;
-    if (facebook) 
-        profileFields.social.facebook = facebook;
-    if (twitter) 
-        profileFields.social.twitter = twitter;
-    if (instagram) 
-        profileFields.social.instagram = instagram;
-    if (linkedin) 
-        profileFields.social.linkedin = linkedin;
-    
+        profileFields.phoneNumber = phoneNumber;
+   
     try {
         let profile = await Profile.findOne({user: req.user.id});
 
