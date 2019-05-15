@@ -7,15 +7,15 @@ const {check, validationResult} = require('express-validator/check');
 const Profile = require('../../models/VolunteerProfile');
 const User = require('../../models/VolunteerUser');
 
-// @route   GET api/profile/me 
+// @route   GET api/volunteerProfile/me 
 // @desc    Get current user's profile 
 // @access  Private
 router.get('/me', auth, async(req, res) => {
     try {
         const profile = await Profile
-            .findOne({uservolunteerUser: req.user.id})
+            .findOne({user: req.user.id})
             // TODO:  investigate this populate
-            .populate('volunteerUser', ['firstName', 'email']);
+            .populate('volunteer-user', ['firstName','email']);
         if (!profile) {
             return res
                 .status(400)
@@ -47,6 +47,12 @@ router.post('/', [
             .not()
             .isEmpty(),
         check('lastName', 'Last name is required')
+            .not()
+            .isEmpty(),
+        check('phoneNumber', 'Phone number is required')
+            .not()
+            .isEmpty(),
+        check('email', 'E-mail number is required')
             .not()
             .isEmpty()
     ]
@@ -145,7 +151,7 @@ router.get('/', async(req, res) => {
 // @access  Public
 router.get('/user/:user_id', async(req, res) => {
     try {
-        // find all profiles. Add names which are part of the 'user'
+        // find all profiles. Add names which are part of the 'volunteer-user'
         // collection (defined in the model)
         const profile = await Profile
             .findOne({user: req.params.user_id})
