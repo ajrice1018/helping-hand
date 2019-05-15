@@ -4,8 +4,8 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const {check, validationResult} = require('express-validator/check');
 
-const Profile = require('../../models/Profile');
-const User = require('../../models/User');
+const Profile = require('../../models/VolunteerProfile');
+const User = require('../../models/VolunteerUser');
 
 // @route   GET api/profile/me 
 // @desc    Get current user's profile 
@@ -59,7 +59,7 @@ router.post('/', [
             });
     }
     const {
-        company,
+        email,
         website,
         location,
         bio,
@@ -77,8 +77,8 @@ router.post('/', [
     const profileFields = {};
 
     profileFields.user = req.user.id;
-    if (company) 
-        profileFields.company = company;
+    if (email) 
+        profileFields.email = email;
     if (website) 
         profileFields.website = website;
     if (location) 
@@ -122,7 +122,7 @@ router.post('/', [
         }
 
         // Create
-        profile = new Profile(profileFields)
+        profile = new VolunteerProfile(profileFields)
 
         await profile.save();
         res.json(profile);

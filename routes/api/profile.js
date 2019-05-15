@@ -59,7 +59,7 @@ router.post('/', [
             });
     }
     const {
-        company,
+        email,
         website,
         location,
         bio,
@@ -77,8 +77,8 @@ router.post('/', [
     const profileFields = {};
 
     profileFields.user = req.user.id;
-    if (company) 
-        profileFields.company = company;
+    if (email) 
+        profileFields.email = email;
     if (website) 
         profileFields.website = website;
     if (location) 
