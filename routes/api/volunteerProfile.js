@@ -14,7 +14,8 @@ router.get('/me', auth, async(req, res) => {
     try {
         const profile = await Profile
             .findOne({uservolunteerUser: req.user.id})
-            .populate('volunteerUser', ['firstName']);
+            // TODO:  investigate this populate
+            .populate('volunteerUser', ['firstName', 'email']);
         if (!profile) {
             return res
                 .status(400)
