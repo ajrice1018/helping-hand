@@ -1,28 +1,18 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
-
-
-
-import Navbar from './components/layout/Navbar';
-import Landing from './components/layout/Landing';
-
-
+import Navbar from './components/Navbar';
+import './App.css';
 
 class App extends Component {
-  render() {
-    return (
+    render() {
+        return (
 
-      <Router>
-        <div className="container">
-
-          <Navbar />
-       
-
-        </div>
-      </Router>
-    );
-  }
+            <Router>
+                <Navbar/>
+            </Router>
+        );
+    }
 }
 
 export default App;
