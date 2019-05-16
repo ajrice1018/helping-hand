@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CreateChore from "../create-chore.component";
 import EditChore from "../edit-chore.component";
 import ChoresList from "../chores-list.component";
-// import MapView from '../pages/MapView';
+import MapView from '../../pages/MapView';
 
 
 const Navbar = () => {
@@ -35,7 +35,7 @@ const Navbar = () => {
       <Route path="/" exact component={ChoresList} />
           <Route path="/edit/:id" component={EditChore} />
           <Route path="/create" component={CreateChore} />
-          {/* <Route path="/map" component={MapView}/>  */}
+          <Route path="/map" component={MapView}/> 
 
       </Router>
     )
