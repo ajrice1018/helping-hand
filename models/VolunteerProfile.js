@@ -5,25 +5,28 @@ const VolunteerProfileSchema = new Schema({
     user: {
         // connect to id in user model that Mongoose creates dynamically
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'volunteer-user'
     },
     firstName: {
-        type: String,
-        required: true
+        type: String
+        // ,
+        // required: true
 
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
+        // ,
+        // required: true
 
     },
     email: {
         type: String,
-        required: true
+        // required: true
     },
     phoneNumber: {
-        type: String,
-        required: true
+        type: String
+        // ,
+        // required: true
     },
     date: {
         type: Date,
@@ -31,4 +34,4 @@ const VolunteerProfileSchema = new Schema({
     }
 });
 
-module.exports = Profile = mongoose.model('profile', VolunteerProfileSchema);
+module.exports = VolunteerProfile = mongoose.model('volunteer-profile', VolunteerProfileSchema);

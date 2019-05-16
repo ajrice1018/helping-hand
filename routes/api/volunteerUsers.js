@@ -5,14 +5,14 @@ const jwt = require("jsonwebtoken");
 const config = require('config');
 const {check, validationResult} = require('express-validator/check');
 
-const User = require('../../models/VolunteerUserSchema');
+const User = require('../../models/VolunteerUser');
 
 // @route   GET api/users 
 // @desc    Register user 
 // @access  Public
 router.post('/', [
-    check('firstName', 'First name is required').not().isEmpty(),
-    check('lastName', 'Last name is required').not().isEmpty(),
+    // check('firstName', 'First name is required').not().isEmpty(),
+    // check('lastName', 'Last name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Please enter a password with 6 or more characters').isLength({min: 6})
 ], async(req, res) => {
@@ -25,11 +25,13 @@ router.post('/', [
             });
     }
 
-    const {firstName, lastName, email, password} = req.body;
+    const {
+        // firstName, lastName, 
+        email, password} = req.body;
 
     try {
         // See if the user exists
-        let user = await VolunteerUserSchema.findOne({email});
+        let user = await User.findOne({email});
         if (user) {
             return res
                 .status(400)
@@ -43,7 +45,9 @@ router.post('/', [
         };
 
         // creates a new user
-        user = new VolunteerUserSchema({firstName, lastName, email, password});
+        user = new User({
+            // firstName, lastName, 
+            email, password});
         // Encrypt password using bcrypt
         const salt = await bcrypt.genSalt(10);
 

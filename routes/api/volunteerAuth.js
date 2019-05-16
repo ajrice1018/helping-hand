@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const config = require('config');
 const {check, validationResult} = require('express-validator/check');
 
-const User = require('../../models/User');
+const User = require('../../models/VolunteerUser');
 
 // @route   GET api/auth 
 // @desc    Test route 
@@ -31,8 +31,6 @@ router.get('/', auth, async(req, res) => {
 // @desc Authenticate user & get token 
 // @access  Public
 router.post('/', [
-    check('firstName', 'First name is required').not().isEmpty(),
-    check('lastName', 'Last name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Password is required').exists()
 ], async(req, res) => {
