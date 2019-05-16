@@ -1,10 +1,10 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
-import CreateChore from "./create-chore.component";
-import EditChore from "./edit-chore.component";
-import ChoresList from "./chores-list.component";
-import Landing from './Landing';
+import CreateChore from "./Create-Chore";
+import EditChore from "./Edit-Chore";
+import ChoresList from "./Chore-List";
+import Landing from './landing';
 import MapView from '../pages/MapView';
 
 const Navbar = () => {

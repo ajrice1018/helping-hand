@@ -11,13 +11,21 @@ const ChoresMap = compose(
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,
-  withGoogleMap
-)((props) =>
+  withGoogleMap)
+  ((props) =>
+    
   <GoogleMap
-    defaultZoom={12}
+    defaultZoom={15}
     center={{ lat: props.currentLocation.lat, lng: props.currentLocation.lng }}
   >
     {props.isMarkerShown && <Marker position={{ lat: props.currentLocation.lat, lng: props.currentLocation.lng }} onClick={props.onMarkerClick} />}
+    
+    {props.isMarkerShown && props.chores.map((chore)=>{
+        return <ChoreMarker 
+            location={{lat: chore.chore_address[0].latitude, lng: chore.chore_address[0].longitude}}
+             />
+        
+    })}
     
   </GoogleMap>
 )

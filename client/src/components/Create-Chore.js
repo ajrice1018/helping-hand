@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import ChoreList from './chores-list.component';
+import ChoreList from './Chore-List';
 
 export default class CreateChore extends Component {
    

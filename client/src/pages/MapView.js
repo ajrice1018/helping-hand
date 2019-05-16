@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {  } from 'react-google-maps'
 import ChoresMap from '../components/ChoresMap'
 import Card from '@material-ui/core/Card'
-import axios from 'axios'
+
 
 
 class MapView extends Component {
@@ -20,7 +20,6 @@ class MapView extends Component {
 
   componentWillUpdate(){
     this.getGeoLocation()
-    this.getChoreLocation()
   }
 
   componentDidMount() {
@@ -44,7 +43,6 @@ class MapView extends Component {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             position => {
-                console.log(position.coords);
                 this.setState(prevState => ({
                     currentLatLng: {
                         ...prevState.currentLatLng,
@@ -58,13 +56,16 @@ class MapView extends Component {
   }
 
   getChoreLocation = () => {
-    axios.get('/chore')
-    .then(response => {
-      this.setState({chores: response.data})
-    })
-    .catch(function(error){
-      console.log(error)
-    })
+    fetch('/chore')
+      .then(response => {return response.json()})
+      .then(data =>{
+        
+        this.setState({
+          chores: data
+        })
+      }).catch(err =>{
+        console.log('error'+ err);
+      })
   }
 
   render() {
@@ -74,8 +75,9 @@ class MapView extends Component {
           isMarkerShown={this.state.isMarkerShown}
           onMarkerClick={this.handleMarkerClick}
           currentLocation={this.state.currentLatLng}
-          choreLocation = {this.chores}
+          chores={this.state.chores}
         />
+        
       </Card>
     )
   }
