@@ -10,8 +10,7 @@
     "react-google-maps": "^9.4.5",
     "react-places-autocomplete": "^7.2.1",
     "react-scripts": "3.0.0",
-    "recompose": "^0.30.0",
-    "semantic-ui-react": "^0.87.1"
+    "recompose": "^0.30.0"
   },
   "scripts": {
     "start": "react-scripts start",
