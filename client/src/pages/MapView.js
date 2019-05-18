@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import {  } from 'react-google-maps'
 import ChoresMap from '../components/ChoresMap'
@@ -14,7 +15,8 @@ class MapView extends Component {
         lng: -122.33207
       },
       isMarkerShown: false,
-      chores: []
+      chores: [],
+      activeMarker: null
     }
   }
 
@@ -34,10 +36,9 @@ class MapView extends Component {
     }, 5000)
   }
 
-  handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false })
-    this.delayedShowMarker()
-  }
+  closeOtherMarkers = (_id) => {
+		this.setState({activeMarker: _id})
+	}
 
   getGeoLocation = () => {
     if (navigator.geolocation) {
@@ -73,9 +74,10 @@ class MapView extends Component {
       <Card>  
         <ChoresMap
           isMarkerShown={this.state.isMarkerShown}
-          onMarkerClick={this.handleMarkerClick}
           currentLocation={this.state.currentLatLng}
           chores={this.state.chores}
+          activeMarker={this.state.activeMarker}
+					closeOtherMarkers={this.closeOtherMarkers}
         />
         
       </Card>
