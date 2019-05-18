@@ -15,6 +15,14 @@ let Chore = new Schema({
     
     chore_address:{
         type: Object
+    },
+
+    chore_phone:{
+        type: Number
+    },
+
+    chore_status: {
+        type: String
     }
 	
 });
