@@ -39,7 +39,9 @@ choresRouter.route('/add').post(function(req, res) {
            chore_description: req.body.chore_description,
            chore_responsible: req.body.chore_responsible,
            chore_address: addressLocation,
-           chore_completed: req.body.chore_completed 
+           chore_completed: req.body.chore_completed ,
+           chore_phone: req.body.chore_phone,
+           chore_status: req.body.chore_status
         });
         chore.save()
         .then(chore => {
