@@ -10,7 +10,7 @@ const ChoreMapCard = (props) => {
 	const { ch } = props
     
 	const handleClick = (e) => {
-		props.toggleShowPage(ch)
+		props.onAccept(ch)
 	}
     
 	
@@ -23,7 +23,7 @@ const ChoreMapCard = (props) => {
             
         </CardContent>
         <CardActions>
-            {/* <Button onClick={handleClick}>Assign Chore</Button> */}
+            <Button onClick={handleClick}>Assign Chore</Button>
         </CardActions>
     </Card>
 	);

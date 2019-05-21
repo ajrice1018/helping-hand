@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { filter, cloneDeep, map } from 'lodash';
-
 import axios from "axios";
 
 const Chore = props => (

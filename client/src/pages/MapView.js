@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import {  } from 'react-google-maps'
 import ChoresMap from '../components/ChoresMap'
 import Card from '@material-ui/core/Card'
-
+import { filter, cloneDeep, map } from 'lodash';
+import axios from "axios";
 
 
 class MapView extends Component {
@@ -16,7 +17,8 @@ class MapView extends Component {
       },
       isMarkerShown: false,
       chores: [],
-      activeMarker: null
+      activeMarker: null,
+      
     }
   }
 
@@ -56,6 +58,21 @@ class MapView extends Component {
     } 
   }
 
+  onAccept=(newChore) =>{
+    // e.preventDefault()
+    newChore.chore_accepted = true;
+    let newChores = cloneDeep(this.state.chores);
+    newChores = map(newChores, chore => {
+        if(chore._id === newChore._id) {
+            chore = newChore;
+        }
+        return chore;
+    });
+    axios.post('/chore/update/' + newChore._id, newChore)
+        .then(res => this.setState({chores: newChores}))
+    console.log(`Chore Accepted`);
+  }
+
   getChoreLocation = () => {
     fetch('/chore')
       .then(response => {return response.json()})
@@ -77,7 +94,8 @@ class MapView extends Component {
           currentLocation={this.state.currentLatLng}
           chores={this.state.chores}
           activeMarker={this.state.activeMarker}
-					closeOtherMarkers={this.closeOtherMarkers}
+          closeOtherMarkers={this.closeOtherMarkers}
+          onAccept={this.onAccept}
         />
         
       </Card>
