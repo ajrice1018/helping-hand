@@ -15,7 +15,7 @@ const ChoresMap = compose(
   ((props) =>
     
   <GoogleMap
-    defaultZoom={15}
+    defaultZoom={14}
     center={{ lat: props.currentLocation.lat, lng: props.currentLocation.lng }}
   >
     {props.isMarkerShown && <Marker position={{ lat: props.currentLocation.lat, lng: props.currentLocation.lng }} onClick={props.onMarkerClick} />}
@@ -29,6 +29,7 @@ const ChoresMap = compose(
             _id={chore._id}
             closeMarkers={props.closeOtherMarkers}
             activeMarker={chore._id === props.activeMarker ? true : false}
+            onAccept={props.onAccept}
              />
         
     })}

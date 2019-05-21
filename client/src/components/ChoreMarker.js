@@ -32,11 +32,14 @@ export default class ChoreMarker extends React.Component {
     return(
         <Marker onClick={this.toggleOpen}
           position={this.props.location}
-          icon={ChoreIcon}
+          icon={{
+             url: "ChoreIcon.png",
+             scaledSize: new window.google.maps.Size(75,75)
+          }}
         >
         { this.state.isOpen && this.state.activeMarker ?
           <InfoWindow maxWidth={800} defaultPosition={ this.props.location } onCloseClick={this.props.onToggleOpen}>
-            <ChoreMapCard toggleShowPage={this.props.toggleShowPage} ch={this.props.chore}/>
+            <ChoreMapCard onAccept={this.props.onAccept} ch={this.props.chore}/>
           </InfoWindow> : null
         }
         
