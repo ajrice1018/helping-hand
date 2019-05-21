@@ -27,8 +27,7 @@ export default class ChoreMarker extends React.Component {
     this.setState({activeMarker: nextProps.activeMarker})
   } 
 
-  render(){
-      // console.log(this.props)
+  render(){ 
     return(
         <Marker onClick={this.toggleOpen}
           position={this.props.location}

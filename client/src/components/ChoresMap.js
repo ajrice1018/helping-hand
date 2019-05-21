@@ -21,7 +21,10 @@ const ChoresMap = compose(
     {props.isMarkerShown && <Marker position={{ lat: props.currentLocation.lat, lng: props.currentLocation.lng }} onClick={props.onMarkerClick} />}
     
     {props.isMarkerShown && props.chores.map((chore)=>{
-        
+      
+      if(chore.chore_accepted === true){
+        return null
+      }else{
         return <ChoreMarker 
             location={{lat: chore.chore_address[0].latitude, lng: chore.chore_address[0].longitude}}
             chore={chore}
@@ -31,7 +34,7 @@ const ChoresMap = compose(
             activeMarker={chore._id === props.activeMarker ? true : false}
             onAccept={props.onAccept}
              />
-        
+      }
     })}
     
   </GoogleMap>

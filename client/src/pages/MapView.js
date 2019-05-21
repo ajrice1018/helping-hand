@@ -69,7 +69,10 @@ class MapView extends Component {
         return chore;
     });
     axios.post('/chore/update/' + newChore._id, newChore)
-        .then(res => this.setState({chores: newChores}))
+        .then(res => this.setState({
+          chores: newChores,
+          
+        }))
     console.log(`Chore Accepted`);
   }
 
