@@ -81,34 +81,34 @@ export default class ChoresList extends Component {
     }
 
     requestedList() {
-        const filteredListRequested = this.getList("not-accepted");
+        const filteredListRequested = this.getList(false, false);
         return filteredListRequested.map((currentChore, i) => {
             return <RequestedChore chore={currentChore} key={i} onAccept={this.onAccept} />;
         });
     }
 
     acceptedList() {
-        const filteredListAccepted = this.getList("accepted");
+        const filteredListAccepted = this.getList(true, false);
         return filteredListAccepted.map((currentChore, i) => {
             return <AcceptedChore chore={currentChore} key={i} onCompleted={this.onCompleted} />;
         });
     }
 
     completedList() {
-        const filteredListCompleted = this.getList("completed");
+        const filteredListCompleted = this.getList(true, true);
         return filteredListCompleted.map(function(currentChore, i) {
             return <Chore chore={currentChore} key={i} />;
         });
     }
 
-    getList (status) {
+    getList (accepted, completed) {
         // console.log(this.state.chores);
-        return filter(this.state.chores, currentChore => currentChore.chore_status === status)
+        return filter(this.state.chores, currentChore => currentChore.chore_accepted === accepted && currentChore.chore_completed === completed)
     }
 
     onAccept(newChore) {
         // e.preventDefault()
-        newChore.chore_status = "accepted";
+        newChore.chore_accepted = true;
         let newChores = cloneDeep(this.state.chores);
         newChores = map(newChores, chore => {
             if(chore._id === newChore._id) {
@@ -123,7 +123,7 @@ export default class ChoresList extends Component {
 
     onCompleted(newChore) {
         // e.preventDefault()
-        newChore.chore_status = "completed";
+        newChore.chore_completed = true;
         let newChoresCompleted = cloneDeep(this.state.chores);
         newChoresCompleted = map(newChoresCompleted, chore => {
             if(chore._id === newChore._id) {
