@@ -21,9 +21,14 @@ let Chore = new Schema({
         type: Number
     },
 
+    // chore_accepted: {
+    //     type: Boolean
+    // }
+    
     chore_status: {
         type: String
     }
+
 	
 });
 

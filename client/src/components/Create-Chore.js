@@ -25,7 +25,7 @@ export default class CreateChore extends Component {
             chore_responsible: '',
             chore_address:'',
             chore_phone:'',
-            chore_status:'',
+            chore_accepted: false,
             chore_completed: false
         }
     }

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { filter } from 'lodash';
+import { filter, cloneDeep, map } from 'lodash';
+// import { cloneDeep } from 'lodash';
+
 
 import axios from "axios";
 
@@ -9,6 +11,7 @@ const Chore = props => (
         <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_description}</td>
         <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_responsible}</td>
         <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_address[0].formattedAddress}</td>
+        <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_phone}</td>
         <td>
             <Link to={"/edit/"+props.chore._id}>Edit</Link>
         </td> 
@@ -16,11 +19,26 @@ const Chore = props => (
     </tr>
 )
 
+const RequestedChore = props => (
+    <tr>
+        <td>{props.chore.chore_description}</td>
+        <td>{props.chore.chore_responsible}</td>
+        <td>{props.chore.chore_address[0].formattedAddress}</td>
+        <td>{props.chore.chore_phone}</td>
+        <td>
+            <button type="button" class="btn btn-primary" onClick={()=>props.onAccept(props.chore)}>Accept</button>
+        </td> 
+       
+    </tr>
+)
+
+
 export default class ChoresList extends Component {
 
     constructor(props) {
         super(props);
         this.state = {chores: []};
+        this.onAccept = this.onAccept.bind(this);
     }
 
     componentDidMount() {
@@ -50,10 +68,10 @@ export default class ChoresList extends Component {
         });
     }
 
-    notAcceptedList() {
-        const filteredListNotAccepted = this.getList("not-accepted");
-        return filteredListNotAccepted.map(function(currentChore, i) {
-            return <Chore chore={currentChore} key={i} />;
+    requestedList() {
+        const filteredListRequested = this.getList("not-accepted");
+        return filteredListRequested.map((currentChore, i) => {
+            return <RequestedChore chore={currentChore} key={i} onAccept={this.onAccept} />;
         });
     }
 
@@ -76,24 +94,35 @@ export default class ChoresList extends Component {
         return filter(this.state.chores, currentChore => currentChore.chore_status === status)
     }
 
+    onAccept(newChore) {
+        // e.preventDefault()
+        console.log(newChore);
+        newChore.chore_status = "accepted";
+
+        let newChores = cloneDeep(this.state.chores);
+        console.log("newChores clone deep: ");
+        console.log(newChores);
+
+        newChores = map(newChores, chore => {
+            if(chore._id === newChore._id) {
+                chore = newChore;
+            }
+            return chore;
+        });
+        // this.setState({chores: newChores})
+        // this.setState({chores: newChore})
+
+        //post route?
+        axios.post('/chore/update/' + newChore._id, newChore)
+            .then(res => this.setState({chores: newChores}))
+
+        console.log(`Chore Accepted`);
+    }
+
+
     render() {
         return (
             <div>
-                {/* <h3>Chores List</h3>
-                <table className="table table-striped" style={{ marginTop: 20 }}>
-                    <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th>Responsible</th>
-                            <th>Address</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.choreList() }
-                    </tbody>
-                </table> */}
-
                 <h3>Requested Chores</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
@@ -101,11 +130,12 @@ export default class ChoresList extends Component {
                             <th>Description</th>
                             <th>Responsible</th>
                             <th>Address</th>
+                            <th>Contact Phone</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        { this.notAcceptedList() }
+                        { this.requestedList() }
                     </tbody>
                 </table>
 
@@ -116,6 +146,7 @@ export default class ChoresList extends Component {
                             <th>Description</th>
                             <th>Responsible</th>
                             <th>Address</th>
+                            <th>Contact Phone</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -132,6 +163,7 @@ export default class ChoresList extends Component {
                             <th>Description</th>
                             <th>Responsible</th>
                             <th>Address</th>
+                            <th>Contact Phone</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
