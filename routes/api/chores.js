@@ -61,8 +61,8 @@ choresRouter.route('/add').post(function(req, res) {
 
 
 choresRouter.route('/update/:id').post(function(req, res) {
-    console.log("route post: ");
-    console.log(req.params.id);
+    // console.log("route post: ");
+    // console.log(req.params.id);
     Chore.findById(req.params.id, function(err, chore) {
         if (!chore)
             res.status(404).send('data is not found');
