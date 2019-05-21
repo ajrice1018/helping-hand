@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { filter, cloneDeep, map } from 'lodash';
-// import { cloneDeep } from 'lodash';
-
 
 import axios from "axios";
 
@@ -32,6 +30,19 @@ const RequestedChore = props => (
     </tr>
 )
 
+const AcceptedChore = props => (
+    <tr>
+        <td>{props.chore.chore_description}</td>
+        <td>{props.chore.chore_responsible}</td>
+        <td>{props.chore.chore_address[0].formattedAddress}</td>
+        <td>{props.chore.chore_phone}</td>
+        <td>
+            <button type="button" class="btn btn-primary" onClick={()=>props.onCompleted(props.chore)}>Completed</button>
+        </td>
+       
+    </tr>
+)
+
 
 export default class ChoresList extends Component {
 
@@ -39,6 +50,7 @@ export default class ChoresList extends Component {
         super(props);
         this.state = {chores: []};
         this.onAccept = this.onAccept.bind(this);
+        this.onCompleted = this.onCompleted.bind(this);
     }
 
     componentDidMount() {
@@ -69,54 +81,59 @@ export default class ChoresList extends Component {
     }
 
     requestedList() {
-        const filteredListRequested = this.getList("not-accepted");
+        const filteredListRequested = this.getList(false, false);
         return filteredListRequested.map((currentChore, i) => {
             return <RequestedChore chore={currentChore} key={i} onAccept={this.onAccept} />;
         });
     }
 
     acceptedList() {
-        const filteredListAccepted = this.getList("accepted");
-        return filteredListAccepted.map(function(currentChore, i) {
-            return <Chore chore={currentChore} key={i} />;
+        const filteredListAccepted = this.getList(true, false);
+        return filteredListAccepted.map((currentChore, i) => {
+            return <AcceptedChore chore={currentChore} key={i} onCompleted={this.onCompleted} />;
         });
     }
 
     completedList() {
-        const filteredListCompleted = this.getList("completed");
+        const filteredListCompleted = this.getList(true, true);
         return filteredListCompleted.map(function(currentChore, i) {
             return <Chore chore={currentChore} key={i} />;
         });
     }
 
-    getList (status) {
+    getList (accepted, completed) {
         // console.log(this.state.chores);
-        return filter(this.state.chores, currentChore => currentChore.chore_status === status)
+        return filter(this.state.chores, currentChore => currentChore.chore_accepted === accepted && currentChore.chore_completed === completed)
     }
 
     onAccept(newChore) {
         // e.preventDefault()
-        console.log(newChore);
-        newChore.chore_status = "accepted";
-
+        newChore.chore_accepted = true;
         let newChores = cloneDeep(this.state.chores);
-        console.log("newChores clone deep: ");
-        console.log(newChores);
-
         newChores = map(newChores, chore => {
             if(chore._id === newChore._id) {
                 chore = newChore;
             }
             return chore;
         });
-        // this.setState({chores: newChores})
-        // this.setState({chores: newChore})
-
-        //post route?
         axios.post('/chore/update/' + newChore._id, newChore)
             .then(res => this.setState({chores: newChores}))
-
         console.log(`Chore Accepted`);
+    }
+
+    onCompleted(newChore) {
+        // e.preventDefault()
+        newChore.chore_completed = true;
+        let newChoresCompleted = cloneDeep(this.state.chores);
+        newChoresCompleted = map(newChoresCompleted, chore => {
+            if(chore._id === newChore._id) {
+                chore = newChore;
+            }
+            return chore;
+        });
+        axios.post('/chore/update/' + newChore._id, newChore)
+            .then(res => this.setState({chores: newChoresCompleted}))
+        console.log(`Chore Completed`);
     }
 
 
