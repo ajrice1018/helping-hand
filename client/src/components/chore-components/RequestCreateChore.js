@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-import ChoreList from './Chore-List';
 
-
-export default class CreateChore extends Component {
+export default class RequestCreateChore extends Component {
    
     constructor(props) {
         super(props);
@@ -129,7 +127,7 @@ export default class CreateChore extends Component {
                     
                     <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>Submit</button>
                 </form>
-                <ChoreList />
+                
             </div>
             
         )

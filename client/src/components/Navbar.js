@@ -1,11 +1,8 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-
-import CreateChore from "./chore-components/Create-Chore";
-import EditChore from "./chore-components/Edit-Chore";
-import ChoresList from "./chore-components/Chore-List";
 import Landing from './landing';
-import MapView from '../pages/MapView';
+import RequestLandingPage from '../pages/RequestLanding';
+import VolunteerLandingPage from '../pages/VolunteerLanding';
 import FAQ from '../pages/FAQ';
 
 const Navbar = () => {
@@ -36,10 +33,8 @@ const Navbar = () => {
 
 
             <Route path="/" exact component={Landing}/>
-            {/* <Route path="/" exact component={ChoresList}/> */}
-            <Route path="/edit/:id" component={EditChore}/>
-            <Route path="/create" component={CreateChore}/> 
-            <Route path="/map" component={MapView}/> 
+            <Route path="/create" component={RequestLandingPage}/> 
+            <Route path="/map" component={VolunteerLandingPage}/> 
             <Route path="/faq" component={FAQ}/>
             </div>
 
