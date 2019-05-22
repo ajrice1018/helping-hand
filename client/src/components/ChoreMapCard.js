@@ -5,6 +5,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+
+
+
 const ChoreMapCard = (props) => {
     
 	const { ch } = props
@@ -13,17 +16,23 @@ const ChoreMapCard = (props) => {
 		props.onAccept(ch)
 	}
     
+    
 	
     return (
     <Card >
         <CardContent>
-            <Typography >
+            <Typography variant="h5" gutterBottom>
                 Chore Request: {ch.chore_description}
             </Typography>
-            
+            <Typography variant="h6" gutterBottom>
+                Requested By: {ch.chore_responsible}
+            </Typography>
+            <Typography>
+                Phone Number: {ch.chore_phone}
+            </Typography>
         </CardContent>
         <CardActions>
-            <Button onClick={handleClick}>Assign Chore</Button>
+            <Button variant="outlined" color="primary" onClick={handleClick}>Assign Chore</Button>
         </CardActions>
     </Card>
 	);

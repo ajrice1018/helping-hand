@@ -37,7 +37,7 @@ export default class ChoreMarker extends React.Component {
           }}
         >
         { this.state.isOpen && this.state.activeMarker ?
-          <InfoWindow maxWidth={800} defaultPosition={ this.props.location } onCloseClick={this.props.onToggleOpen}>
+          <InfoWindow maxWidth={900} defaultPosition={ this.props.location } onCloseClick={this.props.onToggleOpen}>
             <ChoreMapCard onAccept={this.props.onAccept} ch={this.props.chore}/>
           </InfoWindow> : null
         }
