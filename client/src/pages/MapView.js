@@ -2,9 +2,14 @@
 import React, { Component } from 'react'
 import {  } from 'react-google-maps'
 import ChoresMap from '../components/ChoresMap'
+import VolunteerAcceptedList from '../components/VolunteerAcceptedList';
+import VolunteerCompletedList from '../components/VolunteerCompletedList';
 import Card from '@material-ui/core/Card'
 import { filter, cloneDeep, map } from 'lodash';
 import axios from "axios";
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+
 
 
 class MapView extends Component {
@@ -91,17 +96,26 @@ class MapView extends Component {
 
   render() {
     return (
-      <Card>  
-        <ChoresMap
-          isMarkerShown={this.state.isMarkerShown}
-          currentLocation={this.state.currentLatLng}
-          chores={this.state.chores}
-          activeMarker={this.state.activeMarker}
-          closeOtherMarkers={this.closeOtherMarkers}
-          onAccept={this.onAccept}
-        />
-        
-      </Card>
+      <React.Fragment>
+        <CssBaseline/>
+        <Card style={{padding: 20, margin: 20}}>  
+          <ChoresMap
+            isMarkerShown={this.state.isMarkerShown}
+            currentLocation={this.state.currentLatLng}
+            chores={this.state.chores}
+            activeMarker={this.state.activeMarker}
+            closeOtherMarkers={this.closeOtherMarkers}
+            onAccept={this.onAccept}
+          />
+          
+        </Card>
+        <Card style={{padding: 20, margin: 20}}>
+          <VolunteerAcceptedList/>
+        </Card> 
+        <Card style={{padding: 20, margin: 20}}>
+          <VolunteerCompletedList/>
+        </Card> 
+      </React.Fragment>    
     )
   }
 }
