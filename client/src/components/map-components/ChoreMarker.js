@@ -1,7 +1,7 @@
 import React from "react";
 import { Marker, InfoWindow } from "react-google-maps";
 import ChoreMapCard from './ChoreMapCard';
-import ChoreIcon from "../images/ChoreIcon.png";
+
 
 export default class ChoreMarker extends React.Component {
   

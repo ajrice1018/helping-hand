@@ -1,9 +1,9 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
-import CreateChore from "./Create-Chore";
-import EditChore from "./Edit-Chore";
-import ChoresList from "./Chore-List";
+import CreateChore from "./chore-components/Create-Chore";
+import EditChore from "./chore-components/Edit-Chore";
+import ChoresList from "./chore-components/Chore-List";
 import Landing from './landing';
 import MapView from '../pages/MapView';
 import FAQ from '../pages/FAQ';
