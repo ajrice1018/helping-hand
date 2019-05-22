@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react'
 import {  } from 'react-google-maps'
-import ChoresMap from '../components/ChoresMap'
-import VolunteerAcceptedList from '../components/VolunteerAcceptedList';
-import VolunteerCompletedList from '../components/VolunteerCompletedList';
+import ChoresMap from '../components/map-components/ChoresMap'
+import VolunteerAcceptedList from '../components/chore-components/VolunteerAcceptedList';
+import VolunteerCompletedList from '../components/chore-components/VolunteerCompletedList';
 import Card from '@material-ui/core/Card'
 import { filter, cloneDeep, map } from 'lodash';
 import axios from "axios";
