@@ -9,25 +9,11 @@ const Chore = props => (
         <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_responsible}</td>
         <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_address[0].formattedAddress}</td>
         <td className={props.chore.chore_completed ? 'completed' : ''}>{props.chore.chore_phone}</td>
-        <td>
-            <Link to={"/edit/"+props.chore._id}>Edit</Link>
-        </td> 
+        
        
     </tr>
 )
 
-const RequestedChore = props => (
-    <tr>
-        <td>{props.chore.chore_description}</td>
-        <td>{props.chore.chore_responsible}</td>
-        <td>{props.chore.chore_address[0].formattedAddress}</td>
-        <td>{props.chore.chore_phone}</td>
-        <td>
-            <button type="button" class="btn btn-primary" onClick={()=>props.onAccept(props.chore)}>Accept</button>
-        </td> 
-       
-    </tr>
-)
 
 const AcceptedChore = props => (
     <tr>
@@ -43,7 +29,7 @@ const AcceptedChore = props => (
 )
 
 
-export default class ChoresList extends Component {
+export default class VolunteeAcceptedList extends Component {
 
     constructor(props) {
         super(props);
@@ -79,24 +65,10 @@ export default class ChoresList extends Component {
         });
     }
 
-    requestedList() {
-        const filteredListRequested = this.getList(false, false);
-        return filteredListRequested.map((currentChore, i) => {
-            return <RequestedChore chore={currentChore} key={i} onAccept={this.onAccept} />;
-        });
-    }
-
     acceptedList() {
         const filteredListAccepted = this.getList(true, false);
         return filteredListAccepted.map((currentChore, i) => {
             return <AcceptedChore chore={currentChore} key={i} onCompleted={this.onCompleted} />;
-        });
-    }
-
-    completedList() {
-        const filteredListCompleted = this.getList(true, true);
-        return filteredListCompleted.map(function(currentChore, i) {
-            return <Chore chore={currentChore} key={i} />;
         });
     }
 
@@ -139,22 +111,6 @@ export default class ChoresList extends Component {
     render() {
         return (
             <div>
-                <h3>Requested Chores</h3>
-                <table className="table table-striped" style={{ marginTop: 20 }}>
-                    <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th>Responsible</th>
-                            <th>Address</th>
-                            <th>Contact Phone</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.requestedList() }
-                    </tbody>
-                </table>
-
                 <h3>Accepted Chores</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
@@ -170,24 +126,6 @@ export default class ChoresList extends Component {
                         { this.acceptedList() }
                     </tbody>
                 </table>
-
-
-                <h3>Completed Chores</h3>
-                <table className="table table-striped" style={{ marginTop: 20 }}>
-                    <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th>Responsible</th>
-                            <th>Address</th>
-                            <th>Contact Phone</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.completedList() }
-                    </tbody>
-                </table>
-
             </div>
 
             

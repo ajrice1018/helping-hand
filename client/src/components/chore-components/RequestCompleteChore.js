@@ -14,6 +14,7 @@ const Chore = props => (
     </tr>
 )
 
+
 export default class VolunteeCompletedList extends Component {
 
     constructor(props) {
