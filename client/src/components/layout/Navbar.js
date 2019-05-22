@@ -1,12 +1,9 @@
 import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import Landing from './Landing';
-import RequestLandingPage from '../../pages/RequestLanding';
-import VolunteerLandingPage from '../../pages/VolunteerLanding';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {logout} from '../../actions/auth';
-import FAQ from '../../pages/FAQ';
+
 
 const Navbar = ({
     auth: {
@@ -27,16 +24,19 @@ const Navbar = ({
                 <Link to="/map" className="nav-link">Map</Link>
             </li>
             <li>
-                <Link to='/profiles'>Profiles</Link>
+                <Link to='/profiles' className="nav-link">Profiles</Link>
             </li>
             <li>
-                <Link to='/dashboard'>
+                <Link to='/dashboard' className="nav-link">
                     <i className='fas fa-user'/>{' '}
                     <span className='hide-sm'>Dashboard</span>
                 </Link>
             </li>
             <li>
-                <a onClick={logout} href='#!'>
+                <Link to="/faq" className="nav-link">FAQ</Link>
+            </li>
+            <li>
+                <a onClick={logout} href='/' className="nav-link">
                     <i className='fas fa-sign-out-alt'/>{' '}
                     <span className='hide-sm'>Logout</span>
                 </a>
@@ -47,25 +47,24 @@ const Navbar = ({
     const guestLinks = (
         <ul>
             <li>
-                <Link to='/profiles'>Profiles</Link>
+                <Link to='/profiles' className="nav-link">Profiles</Link>
             </li>
             <li>
                 <Link to="/faq" className="nav-link">FAQ</Link>
             </li>
             <li>
-                <Link to='/login'>Login</Link>
+                <Link to='/login' className="nav-link">Login</Link>
             </li>
         </ul>
     );
     return (
-        <Router>
+        // <Router>
             <div className="container">
 
                 <nav className='navbar bg-dark'>
                     <h1>
                         <Link to='/'>
-                            <i className='fas fa-code'/>
-                            DevConnector
+                            Helping Hands
                         </Link>
                     </h1>
                     {!loading && (
@@ -75,13 +74,15 @@ const Navbar = ({
                     )}
                 </nav>
 
-                <Route path="/" exact component={Landing}/>
+                {/* <Route path="/" exact component={Landing}/>
+                <Route path="/login" component={Login}/>
+                <Route path="/register" component={Register}/>
                 <Route path="/create" component={RequestLandingPage}/>
                 <Route path="/map" component={VolunteerLandingPage}/>
-                <Route path="/faq" component={FAQ}/>
+                <Route path="/faq" component={FAQ}/> */}
             </div>
 
-        </Router>
+
     )
 }
 
