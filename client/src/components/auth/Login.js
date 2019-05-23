@@ -23,11 +23,11 @@ const Login = ({ login, isAuthenticated }) => {
 
     // Redirect if loggedin
     if(isAuthenticated) {
-        return <Redirect to="/dashboard" />
+        return <Redirect to="/requestor-landing" />
     }
 
     return <Fragment>
-        <h1 className="large text-primary">Sign Up</h1>
+        <h1 className="large text-primary">Sign In</h1>
         <p className="lead">
             <i className="fas fa-user"></i>
             Create Your Account</p>

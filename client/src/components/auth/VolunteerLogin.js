@@ -3,9 +3,9 @@ import {Link, Redirect} from "react-router-dom";
 // import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { login } from '../../actions/auth';
+import { loginVolunteer } from '../../actions/auth';
 
-const VolunteerLogin = ({ login, isAuthenticated }) => {
+const VolunteerLogin = ({ loginVolunteer, isAuthenticated }) => {
     const [formData,
         setFormData] = useState({name: '', email: '', password: '', password2: ''});
 
@@ -17,17 +17,17 @@ const VolunteerLogin = ({ login, isAuthenticated }) => {
 
     const onSubmit = async e => {
         e.preventDefault();
-        login(email, password);
+        loginVolunteer(email, password);
     };
 
 
     // Redirect if loggedin
     if(isAuthenticated) {
-        return <Redirect to="/dashboard" />
+        return <Redirect to="/volunteer-landing" />
     }
 
     return <Fragment>
-        <h1 className="large text-primary">Sign Up</h1>
+        <h1 className="large text-primary">Log In</h1>
         <p className="lead">
             <i className="fas fa-user"></i>
             Create Your Volunteer Account</p>
@@ -58,7 +58,7 @@ const VolunteerLogin = ({ login, isAuthenticated }) => {
         </form>
         <p className="my-1">
             Don't have an account?
-            <Link to="/register">Sign Up</Link>
+            <Link to="/volunteer-register">Sign Up</Link>
         </p>
 
     </Fragment>
@@ -66,7 +66,7 @@ const VolunteerLogin = ({ login, isAuthenticated }) => {
 };
 
 VolunteerLogin.propTypes = {
-    login: PropTypes.func.isRequired,
+    loginVolunteer: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
   };
 
@@ -76,5 +76,5 @@ VolunteerLogin.propTypes = {
 
 export default connect(
     mapStateToProps,
-    { login }
+    { loginVolunteer }
   )(VolunteerLogin);
