@@ -30,66 +30,65 @@ export default class SendMessage extends Component {
         }
     }
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.drone = new window.Scaledrone("5nNrvoa1lp1x0t3c", {
           data: this.state.member
         });
+        const fixedState = {...this.state}
+        fixedState.member.username = props.currentUser
+        this.state = fixedState
+        console.log(props);
+        console.log(this.state.member);
         this.drone.on('open', error => {
           if (error) {
             return console.error(error);
           }
+          
           const member = {...this.state.member};
           member.id = this.drone.clientId;
           this.setState({member});
         });
-        const room = this.drone.subscribe("observable-room");
-        room.on('data', (data, member) => {
+          const room = this.drone.subscribe("observable-room2", {historyCount: 5});
+          room.on('history_message', (message) => {
+            console.log(message);
             const messages = this.state.messages;
-            messages.push({member, text: data});
-            this.setState({messages});
+            console.log(message.member);
+            messages.push(message);
+          this.setState({messages});
           });
-    }
-
-    onSendMessage = (message) => {
+          room.on('message', message => { 
+          const messages = this.state.messages;
+          console.log(message.member)
+          messages.push(message);
+          this.setState({messages});
+        });
+      }
+    
+      render() {
+        return (
+          <div className="App">
+            <div className="App-header">
+              <h1><i class="far fa-comments"></i></h1>
+            </div>
+            <div className="messageParent">
+            <Messages
+              messages={this.state.messages}
+              currentMember={this.state.member}
+            />
+            <Input
+              onSendMessage={this.onSendMessage}
+            />
+            </div>
+          </div>
+        );
+      }
+    
+      onSendMessage = (message) => {
         this.drone.publish({
-          room: "observable-room",
+          room: "observable-room2",
           message
         });
+      }
+    
     }
-
-    // constructor(props) {
-    //     super(props);
-
-    //     this.state = {
-    //         messages: [
-    //           {
-    //             text: "This is a test message!",
-    //             member: {
-    //               color: "blue",
-    //               username: "bluemoon"
-    //             }
-    //           }
-    //         ],
-    //         member: {
-    //           username: randomName(),
-    //           color: randomColor()
-    //         }
-    //     }
-    // }
-
-    render() {
-        return (
-            <div className="App">
-                <h3>Send Message</h3>
-                <Messages
-                    messages={this.state.messages}
-                    currentMember={this.state.member}
-                />
-                <Input
-                    onSendMessage={this.onSendMessage}
-                />
-            </div>
-        )
-    }
-}
