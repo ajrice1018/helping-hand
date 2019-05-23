@@ -38,7 +38,7 @@ const Navbar = () => {
             <Route path="/create" component={RequestLandingPage}/> 
             <Route path="/map" component={VolunteerLandingPage}/> 
             <Route path="/faq" component={FAQ}/>
-            <Route path="/message/:id" component={SendMessage}/>
+            
             </div>
 
         </Router>

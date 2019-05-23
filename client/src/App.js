@@ -11,6 +11,8 @@ import setAuthToken from './utils/setAuthToken';
 import RequestLandingPage from './pages/RequestLanding';
 import VolunteerLandingPage from './pages/VolunteerLanding';
 import FAQ from './pages/FAQ';
+import SendMessage from './components/message-components/Send-Message';
+
 
 // REDUX
 import {Provider} from 'react-redux';
@@ -42,6 +44,10 @@ const App = () => {
                             <Route exact path="/volunteer-login" component={VolunteerLogin}/>
                             <Route path="/" exact component={Landing}/>
                             <Route path="/register" component={Register}/>
+                            <Route path="/create" component={RequestLandingPage}/>
+                            <Route path="/map" component={VolunteerLandingPage}/>
+                            <Route path="/faq" component={FAQ}/>
+                            <Route path="/message/:id" component={SendMessage}/>
                             <Route path="/requestor-landing" component={RequestLandingPage}/>
                             <Route path="/volunteer-landing" component={VolunteerLandingPage}/>
                         </Switch>
