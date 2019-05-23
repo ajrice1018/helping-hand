@@ -1,4 +1,6 @@
 import React from "react";
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {connect} from 'react-redux';
 
 const Landing = () => {
     return (
@@ -9,14 +11,13 @@ const Landing = () => {
                     <p class="lead">
                         Welcome!
                     </p>
-                    <div class="buttons">
-                        <a href="register.html" className="btn btn-primary">Sign Up</a>
-                        <a href="login.html" className="btn btn-light">Login</a>
+                    <div className="buttons">
+                        <Link to="/volunteer-register" className="btn btn-primary">Volunteers</Link>
+                        <Link to="/register" className="btn btn-light">Requesters</Link>
                     </div>
                 </div>
             </div>
         </section>
-
 
     )
 }

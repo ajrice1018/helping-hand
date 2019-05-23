@@ -31,12 +31,13 @@ ul {
 }
 
 img {
-  width: 100%;
+  width: 200%;
 }
 
 /* Utilities */
+
 .container {
-  max-width: 1100px;
+  /* max-width: 1100px; */
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
@@ -337,9 +338,9 @@ button {
 .landing {
   position: relative;
 
-  background: url('./images/showcase.jpg') no-repeat center center/cover;
+  /* background: url('./images/showcase.jpg') no-repeat center center/cover; */
 
-  height: 100vh;
+  height: 80vh;
 }
 
 .landing-inner {
