@@ -38,13 +38,12 @@ const App = () => {
                         <Switch>
                             <Route exact path="/register" component={Register}/>
                             <Route exact path="/volunteer-register" component={VolunteerRegister}/>
-                            <Route exact path="/login" component={VolunteerLogin}/>
-                            <Route exact path="/volunteer-login" component={Login}/>
+                            <Route exact path="/login" component={Login}/>
+                            <Route exact path="/volunteer-login" component={VolunteerLogin}/>
                             <Route path="/" exact component={Landing}/>
                             <Route path="/register" component={Register}/>
-                            <Route path="/create" component={RequestLandingPage}/>
-                            <Route path="/map" component={VolunteerLandingPage}/>
-                            <Route path="/faq" component={FAQ}/>
+                            <Route path="/requestor-landing" component={RequestLandingPage}/>
+                            <Route path="/volunteer-landing" component={VolunteerLandingPage}/>
                         </Switch>
                     </section>
                 </Fragment>

@@ -34,7 +34,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 
     // Redirect if logged in
     if (isAuthenticated) {
-        return <Redirect to="/map"/>
+        return <Redirect to="/requestor-landing"/>
     }
 
     return (

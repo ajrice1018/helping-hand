@@ -23,6 +23,28 @@ export const loadUser = () => async dispatch => {
     }
 };
 
+
+// Load Volunteer User
+export const loadVolunteerUser = () => async dispatch => {
+  // if there is a token in local storage
+  if (localStorage.token) {
+      // put into global header
+      setAuthToken(localStorage.token);
+  }
+
+  try {
+      const res = await axios.get('/api/volunteerAuth');
+
+      dispatch({
+          type: USER_LOADED, 
+          payload: res.data
+      });
+  } catch (err) {
+      dispatch({type: AUTH_ERROR});
+  }
+};
+
+
 // Register User
 export const register = ({firstName, lastName, email, password}) => async dispatch => {
     const config = {
@@ -53,6 +75,39 @@ export const register = ({firstName, lastName, email, password}) => async dispat
             type: REGISTER_FAIL
         });
     }
+};
+
+// Register Volunteer User
+export const registerVolunteer = ({firstName, lastName, email, password}) => async dispatch => {
+  console.log("reg")
+  const config = {
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  };
+
+  const body = JSON.stringify({firstName, lastName, email, password});
+
+  try {
+      const res = await axios.post('/api/volunteerUsers', body, config);
+
+      dispatch({
+          type: REGISTER_SUCCESS, 
+          payload: res.data
+      });
+
+      dispatch(loadVolunteerUser());
+  } catch (err) {
+      const errors = err.response.data.errors;
+
+      if (errors) {
+          errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      }
+
+      dispatch({
+          type: REGISTER_FAIL
+      });
+  }
 };
 
 // Login User
@@ -86,6 +141,41 @@ export const login = (email, password) => async dispatch => {
       });
     }
   };
+
+
+  // Login Volunteer User
+export const loginVolunteer = (email, password) => async dispatch => {
+  console.log("log")
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const body = JSON.stringify({ email, password });
+
+  try {
+    const res = await axios.post('/api/volunteerAuth', body, config);
+
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data
+    });
+
+    dispatch(loadVolunteerUser());
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: LOGIN_FAIL
+    });
+  }
+};
+
 
   // Logout / Clear Profile
 export const logout = () => dispatch => {
