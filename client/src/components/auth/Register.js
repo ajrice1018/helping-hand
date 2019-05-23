@@ -7,22 +7,26 @@ import {register} from "../../actions/auth";
 import PropTypes from 'prop-types';
 
 const Register = ({setAlert, register, isAuthenticated}) => {
-    const [formData,
-        setFormData] = useState({name: '', email: '', password: '', password2: ''});
+    const [formData, setFormData] = useState({firstName: '', lastName: '', email: '', password: '', password2: ''});
 
-    const {name, email, password, password2} = formData;
 
-    const onChange = e => setFormData({
+    const {firstName, lastName, email, password, password2} = formData;
+
+    const onChange = e => {
+       console.log( 
+           formData)
+        setFormData({
+
         ...formData,
         [e.target.name]: e.target.value
-    });
+    })};
 
     const onSubmit = async e => {
         e.preventDefault();
         if (password !== password2) {
             setAlert('Passwords do not match', 'danger');
         } else {
-            register({name, email, password});
+            register({firstName, lastName, email, password});
 
         }
     };
@@ -30,7 +34,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 
     // Redirect if logged in
     if (isAuthenticated) {
-        return <Redirect to="/dashboard"/>
+        return <Redirect to="/map"/>
     }
 
     return (
@@ -41,13 +45,16 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                 Create Your Account</p>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
-                    <input type="text" placeholder="Name" name="name" value={name} onChange={e => onChange(e)} // required      
+                    <input type="text" placeholder="First Name" name="firstName" value={firstName} onChange={e => onChange(e)} // required      
                     />
                 </div>
                 <div className="form-group">
-                    <input type="email" placeholder="Email Address" name="email" onChange={e => onChange(e)} // required
+                    <input type="text" placeholder="Last Name" name="lastName" value={lastName} onChange={e => onChange(e)} // required      
                     />
-                    <small className="form-text">This site uses Gravatar so if you want a profile image, use a Gravatar email</small >
+                </div>
+                <div className="form-group">
+                    <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)} // required
+                    />
                 </div>
                 <div className="form-group">
                     <input type="password" placeholder="Password" name="password" minLength="6" onChange={e => onChange(e)} // required

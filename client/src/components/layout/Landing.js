@@ -11,7 +11,7 @@ const Landing = () => {
                     <p class="lead">
                         Welcome!
                     </p>
-                    <div class="buttons">
+                    <div className="buttons">
                         <Link to="/volunteer-register" className="btn btn-primary">Volunteers</Link>
                         <Link to="/register" className="btn btn-light">Requesters</Link>
                     </div>
