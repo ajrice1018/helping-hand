@@ -22,6 +22,9 @@ const AcceptedChore = props => (
         <td>{props.chore.chore_address[0].formattedAddress}</td>
         <td>{props.chore.chore_phone}</td>
         <td>
+            <Link to={"/message/"+props.chore._id}>Send Message</Link>
+        </td> 
+        <td>
             <button type="button" class="btn btn-primary" onClick={()=>props.onCompleted(props.chore)}>Completed</button>
         </td>
        
@@ -119,6 +122,7 @@ export default class VolunteeAcceptedList extends Component {
                             <th>Responsible</th>
                             <th>Address</th>
                             <th>Contact Phone</th>
+                            <th>Contact</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

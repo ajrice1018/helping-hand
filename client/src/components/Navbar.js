@@ -4,6 +4,8 @@ import Landing from './landing';
 import RequestLandingPage from '../pages/RequestLanding';
 import VolunteerLandingPage from '../pages/VolunteerLanding';
 import FAQ from '../pages/FAQ';
+import SendMessage from '../components/message-components/Send-Message';
+
 
 const Navbar = () => {
     return (
@@ -36,6 +38,7 @@ const Navbar = () => {
             <Route path="/create" component={RequestLandingPage}/> 
             <Route path="/map" component={VolunteerLandingPage}/> 
             <Route path="/faq" component={FAQ}/>
+            <Route path="/message/:id" component={SendMessage}/>
             </div>
 
         </Router>
