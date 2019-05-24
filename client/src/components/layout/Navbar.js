@@ -76,13 +76,6 @@ const Navbar = ({
                                 : guestLinks}</Fragment>
                     )}
                 </nav>
-
-                {/* <Route path="/" exact component={Landing}/>
-                <Route path="/login" component={Login}/>
-                <Route path="/register" component={Register}/>
-                <Route path="/create" component={RequestLandingPage}/>
-                <Route path="/map" component={VolunteerLandingPage}/>
-                <Route path="/faq" component={FAQ}/> */}
             </div>
 
 
