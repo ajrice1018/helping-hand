@@ -1,73 +1,18 @@
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import {makeStyles} from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-
-
 import React, {Fragment, useState} from "react";
 import {connect} from 'react-redux';
 import {Link, Redirect} from "react-router-dom";
 import {setAlert} from "../../actions/alert";
-import {register} from "../../actions/auth";
+import {registerVolunteer} from "../../actions/auth";
 
 import PropTypes from 'prop-types';
 
-function MadeWithLove() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Built with love by the '}
-        <Link color="inherit" href="https://material-ui.com/">
-          Material-UI
-        </Link>
-        {' team.'}
-      </Typography>
-    );
-  }
-  
-  const useStyles = makeStyles(theme => ({
-    '@global': {
-      body: {
-        backgroundColor: theme.palette.common.white,
-      },
-    },
-    paper: {
-      marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(3),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }));
-  
-
-const Register = ({setAlert, register, isAuthenticated}) => {
+const VolunteerRegister = ({setAlert, registerVolunteer, isAuthenticated}) => {
     const [formData, setFormData] = useState({firstName: '', lastName: '', email: '', password: '', password2: ''});
 
 
     const {firstName, lastName, email, password, password2} = formData;
 
     const onChange = e => {
-       console.log( 
-           formData)
         setFormData({
 
         ...formData,
@@ -79,7 +24,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
         if (password !== password2) {
             setAlert('Passwords do not match', 'danger');
         } else {
-            register({firstName, lastName, email, password});
+            registerVolunteer({firstName, lastName, email, password});
 
         }
     };
@@ -87,7 +32,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 
     // Redirect if logged in
     if (isAuthenticated) {
-        return <Redirect to="/requestor-landing"/>
+        return <Redirect to="/volunteer-landing"/>
     }
 
     return (
@@ -121,18 +66,18 @@ const Register = ({setAlert, register, isAuthenticated}) => {
             </form>
             <p className="my-1">
                 Already have an account?
-                <Link to="/login">Sign In</Link>
+                <Link to="/volunteer-login">Sign In</Link>
             </p>
 
         </Fragment>
     )
 };
 
-Register.propTypes = {
+VolunteerRegister.propTypes = {
     setAlert: PropTypes.func.isRequired,
-    register: PropTypes.func.isRequired,
+    registerVolunteer: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({isAuthenticated: state.auth.isAuthenticated});
-export default connect(mapStateToProps, {setAlert, register})(Register);
+export default connect(mapStateToProps, {setAlert, registerVolunteer})(VolunteerRegister);
