@@ -15,7 +15,7 @@ const Navbar = ({
     const authLinks = (
         <ul>
             <li>
-                <Link to="/home" className="nav-link">Home</Link>
+                <Link to="/" className="nav-link">Home</Link>
             </li>
             <li>
                 <Link to="/create" className="nav-link">Create Chore</Link>
@@ -47,7 +47,7 @@ const Navbar = ({
     const guestLinks = (
         <ul>
             <li>
-                <Link to="/home" className="nav-link">Home</Link>
+                <Link to="/" className="nav-link">Home</Link>
             </li>
             <li>
                 <Link to='/profiles' className="nav-link">Profiles</Link>
@@ -76,13 +76,6 @@ const Navbar = ({
                                 : guestLinks}</Fragment>
                     )}
                 </nav>
-
-                {/* <Route path="/" exact component={Landing}/>
-                <Route path="/login" component={Login}/>
-                <Route path="/register" component={Register}/>
-                <Route path="/create" component={RequestLandingPage}/>
-                <Route path="/map" component={VolunteerLandingPage}/>
-                <Route path="/faq" component={FAQ}/> */}
             </div>
 
 
