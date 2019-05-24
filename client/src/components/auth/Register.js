@@ -23,9 +23,9 @@ function MadeWithLove() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Built with love by the '}
-            <Link color="inherit" href="https://material-ui.com/">
+            {/* <Link color="inherit" href="https://material-ui.com/">
                 Material-UI
-            </Link>
+            </Link> */}
             {' team.'}
         </Typography>
     );
@@ -97,7 +97,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                     {/* <LockOutlinedIcon /> */}
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign up
+                    Sign in as a Requestor
                 </Typography>
                 <form className={classes.form} noValidate onSubmit={e => onSubmit(e)}>
                     <Grid container spacing={2}>
@@ -143,7 +143,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                     <Grid container justify="flex-end">
                         <Grid item>
                             <Link href="#" variant="body2">
-                                Already have an account? Sign in
+                            Already have an account? <Link to="/login"> Sign In!</Link>
                             </Link>
                         </Grid>
                     </Grid>
