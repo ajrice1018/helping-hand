@@ -62,14 +62,14 @@ function FAQ(props) {
         />
         <CardContent>
             
-                <div>
-                    <Typography className={classes.text}  gutterBottom variant="headline" component="h2">
-                        Helping Hands is a community based app to create to assist and help our home bound neighbors. The goal of this app is by including all members of our community we can create a more inclusive and caring community where we are looking out to help and assist all of our neighbors.
-                    </Typography>
-                    <List dense={dense}>
-                        <ListItem>Sign Up for a Helping Hands Volunteer Account</ListItem>
-                    </List>
-                </div>
+        <div>
+            <Typography className={classes.text}  gutterBottom variant="headline" component="h2">
+                Helping Hands is a community based app to create to assist and help our home bound neighbors. The goal of this app is by including all members of our community we can create a more inclusive and caring community where we are looking out to help and assist all of our neighbors.
+            </Typography>
+            <List dense={dense}>
+                <ListItem>Sign Up for a Helping Hands Volunteer Account</ListItem>
+            </List>
+        </div>
             
         </CardContent>
       
