@@ -15,7 +15,7 @@ const Navbar = ({
     const authLinks = (
         <ul>
             <li>
-                <Link to="/" className="nav-link">Chores</Link>
+                <Link to="/home" className="nav-link">Home</Link>
             </li>
             <li>
                 <Link to="/create" className="nav-link">Create Chore</Link>
@@ -47,14 +47,17 @@ const Navbar = ({
     const guestLinks = (
         <ul>
             <li>
+                <Link to="/home" className="nav-link">Home</Link>
+            </li>
+            <li>
                 <Link to='/profiles' className="nav-link">Profiles</Link>
             </li>
             <li>
                 <Link to="/faq" className="nav-link">FAQ</Link>
             </li>
-            <li>
+            {/* <li>
                 <Link to='/login' className="nav-link">Login</Link>
-            </li>
+            </li> */}
         </ul>
     );
     return (

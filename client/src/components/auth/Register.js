@@ -56,6 +56,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+
 const Register = ({setAlert, register, isAuthenticated}) => {
     const [formData,
         setFormData] = useState({firstName: '', lastName: '', email: '', password: '', password2: ''});

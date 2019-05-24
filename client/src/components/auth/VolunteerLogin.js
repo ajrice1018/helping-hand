@@ -128,7 +128,7 @@ const VolunteerLogin = ({ loginVolunteer, isAuthenticated }) => {
                         <Grid item>
                             <Link href="#" variant="body2">
                                 Don't have an account?
-                                <Link to="/volunteer-register"> Sign In</Link>
+                                <Link to="/volunteer-register"> Sign Up</Link>
                             </Link>
                         </Grid>
                     </Grid>
