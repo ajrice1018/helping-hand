@@ -10,6 +10,7 @@ import Alert from './components/layout/Alert';
 import setAuthToken from './utils/setAuthToken';
 import RequestLandingPage from './pages/RequestLanding';
 import VolunteerLandingPage from './pages/VolunteerLanding';
+import Home from './pages/Home';
 import FAQ from './pages/FAQ';
 import SendMessage from './components/message-components/Send-Message';
 
@@ -35,7 +36,6 @@ const App = () => {
             <Router>
                 <Fragment>
                     <Navbar/> 
-                    <section className="container">
                         <Alert/>
                         <Switch>
                             <Route exact path="/register" component={Register}/>
@@ -43,6 +43,7 @@ const App = () => {
                             <Route exact path="/login" component={Login}/>
                             <Route exact path="/volunteer-login" component={VolunteerLogin}/>
                             <Route path="/" exact component={Landing}/>
+                            <Route path="/home" exact component={Home}/>
                             <Route path="/register" component={Register}/>
                             <Route path="/create" component={RequestLandingPage}/>
                             <Route path="/map" component={VolunteerLandingPage}/>
@@ -51,7 +52,6 @@ const App = () => {
                             <Route path="/requestor-landing" component={RequestLandingPage}/>
                             <Route path="/volunteer-landing" component={VolunteerLandingPage}/>
                         </Switch>
-                    </section>
                 </Fragment>
             </Router>
         </Provider>
