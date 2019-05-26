@@ -11,6 +11,7 @@ import Card from '@material-ui/core/Card'
 import theme from '../../pages/modules/theme';
 import { ThemeProvider } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 const Chore = props => (
     <ThemeProvider theme={theme}>
@@ -18,7 +19,8 @@ const Chore = props => (
         <Box display="flex" p={1} bgcolor="background.paper">
             <Grid container spacing={4}>    
                 <Grid item spacing={8}>
-                    <Card >
+                    <CardActionArea>
+                    <Card style={{backgroundColor:'#14A098'}}>
                         <Grid  container spacing={4} padding={5}>
                             <Grid item xs={12} md={6}>
                                 <Hidden smDown>
@@ -30,16 +32,16 @@ const Chore = props => (
                             </Grid> 
                             <Grid  spacing={4} item xs={12} md={6}>
                                 <Box p={8}>
-                                    <Typography padding="theme.spacing(4)" variant="h3" component="h2" gutterBottom>
+                                    <Typography style={{color:'#cccccc'}} padding="theme.spacing(4)" variant="h3" component="h2" gutterBottom>
                                         {props.chore.chore_description}
                                     </Typography>
-                                    <Typography variant="h5" component="h3" gutterBottom>
-                                        Who Needs Help: {props.chore.chore_responsible}
+                                    <Typography style={{color:'#cccccc'}} variant="h5" component="h3" gutterBottom>
+                                        Who Has Been Helped: {props.chore.chore_responsible}
                                     </Typography>
-                                    <Typography variant="h5" gutterBottom>
+                                    <Typography style={{color:'#cccccc'}} variant="h5" gutterBottom>
                                         Chore Address: {props.chore.chore_address[0].formattedAddress}
                                     </Typography>
-                                    <Typography variant="h5" gutterBottom>
+                                    <Typography style={{color:'#cccccc'}} variant="h5" gutterBottom>
                                         Phone Number: {props.chore.chore_phone}
                                     </Typography>
                                 </Box>
@@ -47,6 +49,7 @@ const Chore = props => (
                                  
                         </Grid>
                     </Card>
+                    </CardActionArea>
                 </Grid>
             </Grid>
         </Box> 
