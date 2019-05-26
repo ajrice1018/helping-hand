@@ -11,6 +11,7 @@ import theme from '../../pages/modules/theme';
 import { ThemeProvider } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 const Chore = props => (
     <tr>
@@ -30,7 +31,8 @@ const AcceptedChore = props => (
         <Box display="flex" p={1} bgcolor="background.paper">
             <Grid container spacing={4}>    
                 <Grid item spacing={8}>
-                    <Card >
+                    <CardActionArea>
+                    <Card style={{backgroundColor:'#14A098'}}>
                         <Grid  container spacing={4} padding={5}>
                             <Grid item xs={12} md={6}>
                                 <Hidden smDown>
@@ -43,28 +45,30 @@ const AcceptedChore = props => (
                             
                             <Grid  spacing={4} item xs={12} md={6}>
                                 <Box p={8}> 
-                                    <Typography padding="theme.spacing(4)" variant="h3" component="h2" gutterBottom>
+                                    <Typography style={{color:'#cccccc'}} padding="theme.spacing(4)" variant="h3" component="h2" gutterBottom>
                                         {props.chore.chore_description}
                                     </Typography>
-                                    <Typography variant="h5" component="h3" gutterBottom>
+                                    <Typography style={{color:'#cccccc'}} variant="h5" gutterBottom>
                                         Who Needs Help: {props.chore.chore_responsible}
                                     </Typography>
-                                    <Typography variant="h5" gutterBottom>
+                                    <Typography style={{color:'#cccccc'}} variant="h5" gutterBottom>
                                         Chore Address: {props.chore.chore_address[0].formattedAddress}
                                     </Typography>
-                                    <Typography variant="h5" gutterBottom>
+                                    <Typography style={{color:'#cccccc'}} variant="h5" gutterBottom>
                                         Phone Number: {props.chore.chore_phone}
                                     </Typography>
-                                </Box>
-                                <Button variant="outlined" color="primary" onClick={()=>props.onCompleted(props.chore)}>Chore Completed</Button> 
+                                
+                                <Button variant="contained" color="primary" onClick={()=>props.onCompleted(props.chore)}>Chore Completed</Button> 
                                 <br/> 
                                 <br/>
-                                <Link color="primary" to={"/message/"+props.chore._id}>Send Message</Link> 
+                                <Button style={{color:'#CB2D6F'}} to={"/message/"+props.chore._id}>Send Message</Button> 
+                                </Box>
                             </Grid>
                              
                         </Grid>
                         
                     </Card>
+                    </CardActionArea>
                 </Grid>
             </Grid>
         </Box>
