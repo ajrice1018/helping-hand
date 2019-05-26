@@ -10,6 +10,7 @@ import Card from '@material-ui/core/Card'
 import theme from '../../pages/modules/theme';
 import { ThemeProvider } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 
 const Chore = props => (
     <tr>
@@ -27,10 +28,12 @@ const AcceptedChore = props => (
     
     <ThemeProvider theme={theme}>
         <Container component="section">
+        <Box display="flex" p={1} bgcolor="background.paper">
             <Grid container spacing={4}>    
                 <Grid item spacing={8}>
                     <Card >
                         <Grid  container spacing={4} padding={5}>
+                            
                             <Grid item xs={12} md={6}>
                                 <Hidden smDown>
                                     <img 
@@ -40,8 +43,8 @@ const AcceptedChore = props => (
                                 </Hidden>
                             </Grid> 
                             
-                            <Grid  spacing={4} item xs={12} md={6}>
-                                
+                            <Grid   spacing={4} item xs={12} md={6}>
+                                <Box p={8}>
                                     <Typography padding="theme.spacing(4)" variant="h3" component="h2" gutterBottom>
                                         {props.chore.chore_description}
                                     </Typography>
@@ -59,6 +62,7 @@ const AcceptedChore = props => (
                                 <br/> 
                                 <br/>
                                 <Link color="primary" to={"/message/"+props.chore._id}>Send Message</Link> 
+                                </Box> 
                             </Grid>
                              
                         </Grid>
@@ -66,6 +70,7 @@ const AcceptedChore = props => (
                     </Card>
                 </Grid>
             </Grid>
+        </Box>    
         </Container>     
     </ThemeProvider>
 

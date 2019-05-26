@@ -11,16 +11,22 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import theme from './modules/theme';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Box from '@material-ui/core/Box';
 
 const styles = {
     card: {
         maxWidth: 1000,
         maxHeight: 1000,
         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        background: 'linear-gradient(45deg, #501F3A 30%, #CB2D6F 90%)',
         border: 0,
-        color: "white"
+        color: "white",
+        position: 'center'
     },
     media: {
         // ⚠️ object-fit is not supported by IE 11.
@@ -32,48 +38,51 @@ const styles = {
   
 };
 
-function typographyV1Theme(theme) {
-  return createMuiTheme({
-    ...theme,
-    typography: {
-      useNextVariants: false,
-      color: "white"
-    },
-  });
-}
-
-
-
 
 function FAQ(props) {
   const { classes } = props;
-  const [dense, setDense] = React.useState(false);
-  const [secondary, setSecondary] = React.useState(false);
+  
+  
   return (
-    <Card className={classes.card} >
+    <React.Fragment>
+    <CssBaseline />
+    
+    <Container maxWidth="lg">  
+    <Box display="flex" justifyContent="center" m={1} p={1}>
+      <Paper >
+        <Grid container>
+        <Grid item >
+          <Card className={classes.card} >
       
-        <CardMedia
-          component="img"
-          alt="Helping Hands FAQ"
-          className={classes.media}
-          height="450"
-          image="FAQ.jpg"
-          title="Helping Hands FAQ"
-        />
-        <CardContent>
-            
-        <div>
-            <Typography className={classes.text}  gutterBottom variant="headline" component="h2">
-                Helping Hands is a community based app to create to assist and help our home bound neighbors. The goal of this app is by including all members of our community we can create a more inclusive and caring community where we are looking out to help and assist all of our neighbors.
-            </Typography>
-            <List dense={dense}>
-                <ListItem>Sign Up for a Helping Hands Volunteer Account</ListItem>
-            </List>
-        </div>
-            
-        </CardContent>
+            <CardMedia
+              component="img"
+              alt="Helping Hands FAQ"
+              className={classes.media}
+              height="450"
+              image="FAQ.jpg"
+              title="Helping Hands FAQ"
+            />
+            <CardContent>
+                
+              <div>
+                <Typography className={classes.text}  gutterBottom variant="headline" component="h2">
+                  Helping Hands is a community based app to create to assist and help our home bound neighbors. The goal of this app is by including all members of our community we can create a more inclusive and caring community where we are looking out to help and assist all of our neighbors.
+                </Typography>
+                <List>
+                  <ListItem>Sign Up for a Helping Hands Volunteer Account</ListItem>
+                </List>
+              </div>
+                
+            </CardContent>
       
-    </Card>
+          </Card>
+        </Grid>
+      </Grid>
+      </Paper>
+      </Box>
+    </Container>
+    
+    </React.Fragment>
   );
 }
 
