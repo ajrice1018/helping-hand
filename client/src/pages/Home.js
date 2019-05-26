@@ -13,10 +13,10 @@ function Home() {
     <React.Fragment>
       {/* <AppAppBar /> */}
       <ProductHero />
-      <ProductValues />
+      {/* <ProductValues />
       <ProductCategories />
       <ProductHowItWorks />
-      <ProductSmokingHero />
+      <ProductSmokingHero /> */}
     </React.Fragment>
   );
 }

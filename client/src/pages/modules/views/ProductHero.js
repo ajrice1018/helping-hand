@@ -67,11 +67,6 @@ function ProductHero(props) {
                 size="55px"
                 href="/register"
                 className="btn btn-primary">Requestors</Button>
-       
-
-            <Typography variant="body2" color="inherit" className={classes.more}>
-                Discover the experience
-            </Typography>
         </ProductHeroLayout>
     );
 }
