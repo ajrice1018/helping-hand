@@ -10,10 +10,12 @@ import Typography from '../../pages/modules/components/Typography';
 import Card from '@material-ui/core/Card'
 import theme from '../../pages/modules/theme';
 import { ThemeProvider } from '@material-ui/styles';
+import Box from '@material-ui/core/Box';
 
 const Chore = props => (
     <ThemeProvider theme={theme}>
         <Container component="section">
+        <Box display="flex" p={1} bgcolor="background.paper">
             <Grid container spacing={4}>    
                 <Grid item spacing={8}>
                     <Card >
@@ -27,7 +29,7 @@ const Chore = props => (
                                 </Hidden>
                             </Grid> 
                             <Grid  spacing={4} item xs={12} md={6}>
-                                
+                                <Box p={8}>
                                     <Typography padding="theme.spacing(4)" variant="h3" component="h2" gutterBottom>
                                         {props.chore.chore_description}
                                     </Typography>
@@ -40,14 +42,16 @@ const Chore = props => (
                                     <Typography variant="h5" gutterBottom>
                                         Phone Number: {props.chore.chore_phone}
                                     </Typography>
-                                
+                                </Box>
                             </Grid>
                                  
                         </Grid>
                     </Card>
                 </Grid>
             </Grid>
-        </Container>     
+        </Box> 
+        </Container>
+           
     </ThemeProvider>
 )
 

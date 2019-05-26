@@ -10,6 +10,7 @@ import Card from '@material-ui/core/Card'
 import theme from '../../pages/modules/theme';
 import { ThemeProvider } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 
 const Chore = props => (
     <tr>
@@ -26,6 +27,7 @@ const Chore = props => (
 const AcceptedChore = props => (
     <ThemeProvider theme={theme}>
         <Container component="section">
+        <Box display="flex" p={1} bgcolor="background.paper">
             <Grid container spacing={4}>    
                 <Grid item spacing={8}>
                     <Card >
@@ -40,7 +42,7 @@ const AcceptedChore = props => (
                             </Grid> 
                             
                             <Grid  spacing={4} item xs={12} md={6}>
-                                
+                                <Box p={8}> 
                                     <Typography padding="theme.spacing(4)" variant="h3" component="h2" gutterBottom>
                                         {props.chore.chore_description}
                                     </Typography>
@@ -53,7 +55,7 @@ const AcceptedChore = props => (
                                     <Typography variant="h5" gutterBottom>
                                         Phone Number: {props.chore.chore_phone}
                                     </Typography>
-                                
+                                </Box>
                                 <Button variant="outlined" color="primary" onClick={()=>props.onCompleted(props.chore)}>Chore Completed</Button> 
                                 <br/> 
                                 <br/>
@@ -65,6 +67,7 @@ const AcceptedChore = props => (
                     </Card>
                 </Grid>
             </Grid>
+        </Box>
         </Container>     
     </ThemeProvider>
 )
