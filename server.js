@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000;
 // Connect database
 const mongoose = require('mongoose');
 const config = require('config');
-const db = config.get('mongoURI');
+const db = config.get('MONGODB_URI');
 
 // Connect to the Mongo DB
 mongoose.connect(db, {useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
-    app.use(express.static(path.join(__dirname, 'client/build')));
+    app.use(express.static(path.join(__dirname, './client/build')));
   // Handle React routing, return all requests to React app
     app.get('*', function(req, res) {
       res.sendFile(path.join(__dirname, './client/build', 'index.html'));
