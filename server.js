@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-
+const PORT = process.env.PORT || 5000;
 
 // Connect database
 const mongoose = require('mongoose');
@@ -15,9 +15,14 @@ mongoose.connect(db, {useNewUrlParser: true, useCreateIndex: true, useFindAndMod
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-}
+if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, 'client/build')));
+  // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+  }
 
 
 // app.get('/', (req, res) => res.send('API Running'));
@@ -31,6 +36,6 @@ app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/volunteerProfile', require('./routes/api/volunteerProfile'));
 app.use('/chore', require('./routes/api/chores'));
 
-const PORT = process.env.PORT || 5000;
+
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
