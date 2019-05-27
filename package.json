@@ -14,7 +14,7 @@
     "client": "cd client && yarn run start",
     "install": "cd client && yarn install",
     "build": "cd client && yarn run build",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "yarn run build"
   },
   "author": "",
   "license": "ISC",
