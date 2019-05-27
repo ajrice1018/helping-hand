@@ -45,7 +45,7 @@ const AcceptedChore = props => (
                                 </Hidden>
                             </Grid> 
                             
-                            <Grid   spacing={4} item xs={12} md={6}>
+                            <Grid item spacing={4}xs={12} md={6}>
                                 <Box p={8}>
                                     <Typography style={{color:'#0f292f'}} padding="theme.spacing(4)" variant="h3" component="h2" gutterBottom>
                                         {props.chore.chore_description}

@@ -4,9 +4,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
-
-
+import Moment from 'react-moment'
 
 const ChoreMapCard = (props) => {
     
@@ -26,6 +24,9 @@ const ChoreMapCard = (props) => {
             </Typography>
             <Typography variant="h6" gutterBottom>
                 Requested By: {ch.chore_responsible}
+            </Typography>
+            <Typography variat='h6' gutterBottom>
+                Chore Date: <Moment format="D MMM YYYY" withTitle date={ch.chore_date}/>
             </Typography>
             <Typography>
                 Phone Number: {ch.chore_phone}

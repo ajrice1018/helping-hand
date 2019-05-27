@@ -12,6 +12,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import CardActionArea from '@material-ui/core/CardActionArea';
+import Moment from 'react-moment'
 
 const Chore = props => (
     <tr>
@@ -53,6 +54,9 @@ const AcceptedChore = props => (
                                     </Typography>
                                     <Typography style={{color:'#cccccc'}} variant="h5" gutterBottom>
                                         Chore Address: {props.chore.chore_address[0].formattedAddress}
+                                    </Typography>
+                                    <Typography style={{color:'#cccccc'}} variant="h5" gutterBottom>
+                                        Chore Date: <Moment format="D MMM YYYY" withTitle date={props.chore.chore_date}/>
                                     </Typography>
                                     <Typography style={{color:'#cccccc'}} variant="h5" gutterBottom>
                                         Phone Number: {props.chore.chore_phone}
