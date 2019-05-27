@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-
+import ChoreCalendarIcon from './ChoreCalendarIcon';
+import {SingleDatePicker} from 'react-dates';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
 
 export default class RequestCreateChore extends Component {
    
@@ -11,6 +14,7 @@ export default class RequestCreateChore extends Component {
         this.onChangeChoreResponsible = this.onChangeChoreResponsible.bind(this);
         this.onChangeChoreAddress = this.onChangeChoreAddress.bind(this);
         this.onChangeChorePhone = this.onChangeChorePhone.bind(this);
+        this.onChangeChoreDate = this.onChangeChoreDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -18,6 +22,8 @@ export default class RequestCreateChore extends Component {
             chore_responsible: '',
             chore_address:'',
             chore_phone:'',
+            chore_date: '',
+            focused: null,
             chore_accepted: false,
             chore_completed: false
         }
@@ -41,6 +47,13 @@ export default class RequestCreateChore extends Component {
         });
     }
 
+    onChangeChoreDate(date){
+        this.setState({
+            chore_date: date
+        });
+        console.log(date)
+    }
+
     onChangeChorePhone(e) {
         this.setState({
             chore_phone: e.target.value
@@ -55,6 +68,7 @@ export default class RequestCreateChore extends Component {
         console.log(`Chore Responsible: ${this.state.chore_responsible}`);
         console.log(`Chore Completed: ${this.state.chore_completed}`);
         console.log(`Chore location: ${this.state.chore_address}`)
+        console.log(`Chore Date: ${this.state.chore_date}`);
         console.log(`Chore Phone: ${this.state.chore_phone}`);
         console.log(`Chore Accepted: ${this.state.chore_accepted}`)
         
@@ -64,6 +78,7 @@ export default class RequestCreateChore extends Component {
             chore_responsible: this.state.chore_responsible,
             chore_completed: this.state.chore_completed,
             chore_address: this.state.chore_address,
+            chore_date: this.state.chore_date,
             chore_phone: this.state.chore_phone,
             chore_accepted: this.state.chore_accepted
         }
@@ -76,6 +91,7 @@ export default class RequestCreateChore extends Component {
                 chore_description:'',
                 chore_responsible:'',
                 chore_address: '',
+                chore_date: '',
                 chore_completed: false,
                 chore_phone: '',
                 chore_accepted: false
@@ -115,6 +131,28 @@ export default class RequestCreateChore extends Component {
                                 onChange={this.onChangeChoreAddress}
                                 />
                     </div>
+                    
+                    <div className="form-group">
+
+                        <label>Chore Date: </label>
+                        <SingleDatePicker
+                          
+                          inputIconPosition="after"
+                          small={true}
+                          block={true}
+                          numberOfMonths={1}
+                          date={this.state.date}
+                          onDateChange={date => this.onChangeChoreDate(date)}
+                          focused={this.state.focused}
+                          onFocusChange={({ focused }) =>
+                            this.setState({ focused })
+                          }
+                          openDirection="up"
+                          hideKeyboardShortcutsPanel={true}
+                        />
+
+                    </div>
+                    
                     <div className="form-group">
                         <label>Contact Phone Number: </label>
                         <input  type="tel"

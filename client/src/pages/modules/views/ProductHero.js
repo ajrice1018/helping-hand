@@ -6,7 +6,7 @@ import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 import {Link} from "react-router-dom";
 
-const backgroundImage = 'https://images.unsplash.com/photo-1533165618640-d7e3069cc8fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=976&q=80';
+const backgroundImage = 'ChoreMapGif.gif';
 
 const styles = theme => ({
     background: {

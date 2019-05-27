@@ -16,7 +16,11 @@ let Chore = new Schema({
     chore_address:{
         type: Object
     },
-
+    
+    chore_date:{
+        type: Date
+    },
+    
     chore_phone:{
         type: Number
     },
