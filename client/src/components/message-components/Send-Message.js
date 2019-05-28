@@ -15,11 +15,6 @@ function randomColor() {
     return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
 }
 
-function randomRoom() {
-    console.log("Your random chatroom number is: ");
-    return Math.floor(Math.random() * 0xFFFFFF).toString(16);
-}
-
 
 
 
@@ -30,7 +25,6 @@ export default class SendMessage extends Component {
         member: {
           username: randomName(),
           color: randomColor(),
-          chatRoom: randomRoom()
         }
     }
 
@@ -58,8 +52,10 @@ export default class SendMessage extends Component {
 
         const room = this.drone.subscribe(this.props.match.params.id, {historyCount: 5});
         room.on('history_message', (message) => {
+            console.log("PRINTING MESSAGE: ");
             console.log(message);
             const messages = this.state.messages;
+            console.log("PRINTING MESSAGE.MEMBER: ");
             console.log(message.member);
             messages.push(message);
             this.setState({messages});
@@ -75,8 +71,9 @@ export default class SendMessage extends Component {
     render() {
             return (
             <div className="App">
+                
                 <div className="App-header">
-                <h1><i class="far fa-comments"></i></h1>
+                <h3><i class="far fa-comments"></i> Send a Message</h3>
                 </div>
                 <div className="messageParent">
                 <Messages

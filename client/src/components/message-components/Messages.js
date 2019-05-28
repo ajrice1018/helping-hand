@@ -18,6 +18,10 @@ class Messages extends Component {
       var color = "#f44";
       var username = "System Message";
       var className = "Messages-message";
+      console.log("PRINTING MEMBER from MESSAGES.js: ");
+      console.log(message.member);
+      console.log("PRINTING MESSAGE from MESSAGES.js: ");
+      console.log(message);
       if (member) {
         if (member.id === currentMember.id){
           className += "currentMember";
