@@ -9,9 +9,8 @@ const MONGODB_URI = "mongodb+srv://kelsey123:kelsey123@cluster0-k22l1.mongodb.ne
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-}
+app.use(express.static("client/build"));
+
 console.log(process.env)
 // Connect database
 // const mongoose = require('mongoose');
