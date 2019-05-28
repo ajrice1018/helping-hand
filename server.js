@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 // const mongoose = require('mongoose');
 // const config = require('config');
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false })
   .then(() => {
     console.log("🗄 ==> Successfully connected to mongoDB.");
   })
