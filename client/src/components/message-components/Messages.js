@@ -15,8 +15,8 @@ class Messages extends Component {
       const {member, data} = message;
       const {currentMember} = this.props;
      
-      var color = "#f44";
-      var username = "System Message";
+      var color = "#2cb101";
+      var username = "Volunteer";
       var className = "Messages-message";
       console.log("PRINTING MEMBER from MESSAGES.js: ");
       console.log(message.member);
