@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("client/build"));
 
-console.log(process.env)
+
 // Connect database
 // const mongoose = require('mongoose');
 // const config = require('config');
