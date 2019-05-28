@@ -25,7 +25,7 @@ mongoose.connect(process.env.MONGODB_URI)
   });
 
 // Connect to the Mongo DB
-mongoose.connect(MONGODB_URI, { useCreateIndex: true, useFindAndModify: false});
+// mongoose.connect(MONGODB_URI, { useCreateIndex: true, useFindAndModify: false});
 
 
 
