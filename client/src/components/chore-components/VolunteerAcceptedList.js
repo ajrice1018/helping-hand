@@ -32,7 +32,7 @@ const AcceptedChore = props => (
         <Box display="flex" p={1} bgcolor="background.paper">
             <Grid container spacing={4}>    
                 <Grid item spacing={8}>
-                    <CardActionArea>
+                   <CardActionArea>
                     <Card style={{backgroundColor:'#14A098'}}>
                         <Grid  container spacing={4} padding={5}>
                             <Grid item xs={12} md={6}>
@@ -65,14 +65,14 @@ const AcceptedChore = props => (
                                 <Button variant="contained" color="primary" onClick={()=>props.onCompleted(props.chore)}>Chore Completed</Button> 
                                 <br/> 
                                 <br/>
-                                <Button style={{color:'#CB2D6F'}} to={"/message/"+props.chore._id}>Send Message</Button> 
+                                <Link style={{color:'#CB2D6F'}} to={"/message/"+props.chore._id}>Send Message</Link> 
                                 </Box>
                             </Grid>
                              
                         </Grid>
                         
                     </Card>
-                    </CardActionArea>
+                    </CardActionArea>  
                 </Grid>
             </Grid>
         </Box>

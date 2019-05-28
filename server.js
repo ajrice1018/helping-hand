@@ -3,13 +3,6 @@ const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 5000;
 
-// Connect database
-const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('MONGODB_URI');
-
-// Connect to the Mongo DB
-mongoose.connect(db, {useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
 
 // Init Middleware
 app.use(cors());
@@ -18,9 +11,15 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
+// Connect database
+const mongoose = require('mongoose');
+const config = require('config');
+const db = config.get('MONGODB_URI');
+
+// Connect to the Mongo DB
+mongoose.connect(db, {useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
 
 
-// app.get('/', (req, res) => res.send('API Running'));
 
 // Define Routes
 app.use('/api/users', require('./routes/api/users'));
