@@ -36,6 +36,8 @@ const styles = theme => ({
     }
 });
 
+
+
 function ProductHero(props) {
     const {classes} = props;
 
@@ -77,6 +79,4 @@ ProductHero.propTypes = {
 };
 const mapStateToProps = state => ({auth: state.auth});
 
-export default connect(mapStateToProps)(ProductHero);
-
-
+export default connect(mapStateToProps) (withStyles(styles)(ProductHero));
