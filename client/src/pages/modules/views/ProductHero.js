@@ -57,19 +57,19 @@ function ProductHero(props) {
                 Welcome to our Website!
             </Typography>
 
-            <Button
+            <Link
                 color="secondary"
                 variant="contained"
                 size="55px"
-                href="/volunteer-register"
-                className="btn btn-primary">Volunteers</Button>
+                to="/volunteer-register"
+                className="btn btn-primary">Volunteers</Link>
             <br />
-            <Button
+            <Link
                 color="secondary"
                 variant="contained"
                 size="55px"
-                href="/register"
-                className="btn btn-primary">Requestors</Button>
+                to="/register"
+                className="btn btn-primary">Requestors</Link>
         </ProductHeroLayout>
     );
 }
