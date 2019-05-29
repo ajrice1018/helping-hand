@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 import {Link} from "react-router-dom";
+import {connect} from 'react-redux';
 
 const backgroundImage = 'ChoreMapGif.gif';
 
@@ -74,5 +75,8 @@ function ProductHero(props) {
 ProductHero.propTypes = {
     classes: PropTypes.object.isRequired
 };
+const mapStateToProps = state => ({auth: state.auth});
 
-export default withStyles(styles)(ProductHero);
+export default connect(mapStateToProps)(ProductHero);
+
+
