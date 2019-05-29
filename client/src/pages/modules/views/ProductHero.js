@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 import {Link} from "react-router-dom";
+import {connect} from 'react-redux';
 
 const backgroundImage = 'ChoreMapGif.gif';
 
@@ -35,6 +36,8 @@ const styles = theme => ({
     }
 });
 
+
+
 function ProductHero(props) {
     const {classes} = props;
 
@@ -54,19 +57,19 @@ function ProductHero(props) {
                 Welcome to our Website!
             </Typography>
 
-            <Button
+            <Link
                 color="secondary"
                 variant="contained"
                 size="55px"
-                href="/volunteer-register"
-                className="btn btn-primary">Volunteers</Button>
+                to="/volunteer-register"
+                className="btn btn-primary">Volunteers</Link>
             <br />
-            <Button
+            <Link
                 color="secondary"
                 variant="contained"
                 size="55px"
-                href="/register"
-                className="btn btn-primary">Requestors</Button>
+                to="/register"
+                className="btn btn-primary">Requestors</Link>
         </ProductHeroLayout>
     );
 }
@@ -74,5 +77,6 @@ function ProductHero(props) {
 ProductHero.propTypes = {
     classes: PropTypes.object.isRequired
 };
+const mapStateToProps = state => ({auth: state.auth});
 
-export default withStyles(styles)(ProductHero);
+export default connect(mapStateToProps) (withStyles(styles)(ProductHero));
