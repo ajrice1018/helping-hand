@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
 import Messages from './Messages';
 import Input from "./Input"
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import theme from '../../pages/modules/theme';
+import { ThemeProvider } from '@material-ui/styles';
+import Box from '@material-ui/core/Box';
 
 
 function randomName() {
@@ -36,8 +44,9 @@ export default class SendMessage extends Component {
         const fixedState = {...this.state}
         fixedState.member.username = props.currentUser
         this.state = fixedState
-        console.log("Props: ");
-        console.log(props);
+        console.log("this.state: ");
+        console.log(this.state);
+        console.log("This.state.member: ");
         console.log(this.state.member);
         this.drone.on('open', error => {
             if (error) {
@@ -70,21 +79,42 @@ export default class SendMessage extends Component {
     
     render() {
             return (
-            <div className="App">
-                
-                <div className="App-header">
-                <h3><i class="far fa-comments"></i> Send a Message</h3>
-                </div>
-                <div className="messageParent">
-                <Messages
-                messages={this.state.messages}
-                currentMember={this.state.member}
-                />
-                <Input
-                onSendMessage={this.onSendMessage}
-                />
-                </div>
-            </div>
+            
+                <div class = "custom-chat">
+                <ThemeProvider theme={theme}>
+        <Container component="section">
+        {/* <Box display="flex" p={1} bgcolor="background.paper"> */}
+            {/* <Grid container spacing={4}>    
+                <Grid item spacing={8}> */}
+
+
+            <Card >
+                <CardContent>
+                    <div className="App">
+                        
+                        <div className="App-header">
+                        <h3><i class="far fa-comments"></i> Send a Message</h3>
+                        </div>
+                        <div className="messageParent">
+                        <Messages
+                        messages={this.state.messages}
+                        currentMember={this.state.member}
+                        />
+                        <Input
+                        onSendMessage={this.onSendMessage}
+                        />
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+
+
+            {/* </Grid>
+            </Grid> */}
+        {/* </Box>     */}
+        </Container>     
+    </ThemeProvider>
+    </div>
             );
     }
     
