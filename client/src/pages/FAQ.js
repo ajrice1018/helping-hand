@@ -17,6 +17,8 @@ import Paper from '@material-ui/core/Paper';
 import theme from './modules/theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
+import {Link, Redirect} from "react-router-dom";
+
 
 const styles = {
     card: {
@@ -69,7 +71,8 @@ function FAQ(props) {
                   Helping Hands is a community based app to create to assist and help our home bound neighbors. The goal of this app is by including all members of our community we can create a more inclusive and caring community where we are looking out to help and assist all of our neighbors.
                 </Typography>
                 <List>
-                  <ListItem>Sign Up for a Helping Hands Volunteer Account</ListItem>
+                  <ListItem><Link to="/volunteer-register">
+                                    Sign Up   </Link>   for a Helping Hands Volunteer Account</ListItem>
                 </List>
               </div>
                 
