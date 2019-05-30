@@ -54,7 +54,6 @@ const App = () => {
                             <Route exact path="/login" component={Login}/>
                             <Route exact path="/volunteer-login" component={VolunteerLogin}/>
                             <Route path="/" exact component={Home}/>
-                            {/* <Route path="/home" exact component={Home}/> */}
                             <Route path="/register" component={Register}/>
                             <Route path="/create" component={RequestLandingPage}/>
                             <Route path="/map" component={VolunteerLandingPage}/>
