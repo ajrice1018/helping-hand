@@ -95,7 +95,7 @@ const VolunteerRegister = ({setAlert, registerVolunteer, isAuthenticated}) => {
             <div className={classes.paper}>
                 <img className="register-hand" src="hand-vol.svg" alt="hand icon"></img>
                 <Typography component="h1" variant="h5">
-                    Sign up to be a Volunteer
+                    Register to be a Volunteer
                 </Typography>
                 <form className={classes.form} noValidate onSubmit={e => onSubmit(e)}>
                     <Grid container spacing={2}>
@@ -131,6 +131,7 @@ const VolunteerRegister = ({setAlert, registerVolunteer, isAuthenticated}) => {
                         </Grid>
                     </Grid>
                     <Button
+                        id="volunteer-signup"
                         type="submit"
                         fullWidth
                         variant="contained"
