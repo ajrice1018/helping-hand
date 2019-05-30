@@ -126,11 +126,11 @@ const Login = ({login, isAuthenticated}) => {
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="#" variant="body2">
+                            <p>
                                 Don't have an account?
                                 <Link to="/register">
                                     Sign Up!</Link>
-                            </Link>
+                            </p>
                         </Grid>
                     </Grid>
                 </form>

@@ -127,7 +127,7 @@ const VolunteerRegister = ({setAlert, registerVolunteer, isAuthenticated}) => {
                             <TextField type="password" // placeholder="Password" 
                                 // name="password" 
                                 minLength="6" onChange={e => onChange(e)} // required
-                                variant="outlined" required fullWidth name="password2" label="Password" type="password2" id="password2" autoComplete="current-password"/>
+                                variant="outlined" required fullWidth name="password2" label="Confirm Password" type="password2" id="password2" autoComplete="current-password"/>
                         </Grid>
                     </Grid>
                     <Button
@@ -141,9 +141,9 @@ const VolunteerRegister = ({setAlert, registerVolunteer, isAuthenticated}) => {
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="#" variant="body2">
+                            <p>
                                 Already have an account? <Link to="/volunteer-login"> Sign In!</Link>
-                            </Link>
+                            </p>
                         </Grid>
                     </Grid>
                 </form>

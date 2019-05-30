@@ -56,7 +56,6 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-
 const Register = ({setAlert, register, isAuthenticated}) => {
     const [formData,
         setFormData] = useState({firstName: '', lastName: '', email: '', password: '', password2: ''});
@@ -128,7 +127,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                             <TextField type="password" // placeholder="Password" 
                                 // name="password" 
                                 minLength="6" onChange={e => onChange(e)} // required
-                                variant="outlined" required fullWidth name="password2" label="Password" type="password2" id="password2" autoComplete="current-password"/>
+                                variant="outlined" required fullWidth name="password2" label="Confirm Password" type="password2" id="password2" autoComplete="current-password"/>
                         </Grid>
                     </Grid>
                     <Button
@@ -142,9 +141,11 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="#" variant="body2">
-                            Already have an account? <Link to="/login"> Sign In!</Link>
-                            </Link>
+                            <p>
+                                Already have an account?
+                                <Link to="/login">
+                                    Sign In!</Link>
+                            </p>
                         </Grid>
                     </Grid>
                 </form>
