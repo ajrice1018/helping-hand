@@ -126,10 +126,10 @@ const VolunteerLogin = ({ loginVolunteer, isAuthenticated }) => {
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="#" variant="body2">
+                            <p>
                                 Don't have an account?
                                 <Link to="/volunteer-register"> Sign Up</Link>
-                            </Link>
+                            </p>
                         </Grid>
                     </Grid>
                 </form>
