@@ -13,9 +13,6 @@ import VolunteerLandingPage from './pages/VolunteerLanding';
 import Home from './pages/Home';
 import FAQ from './pages/FAQ';
 import SendMessage from './components/message-components/Send-Message';
-
-
-
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
@@ -63,7 +60,7 @@ const App = () => {
                             <Route path="/volunteer-landing" component={VolunteerLandingPage}/>
 
 
-                            <Route exact path='/profiles' component={Profiles} />
+                            <Route exact path='/profiles' render ={(props)=> <Profiles{...props}/>}/>
                             <Route exact path='/profile/:id' component={Profile} />
                             <PrivateRoute exact path='/dashboard' component={Dashboard} />
                             <PrivateRoute exact path='/create-profile' component={CreateProfile} />
