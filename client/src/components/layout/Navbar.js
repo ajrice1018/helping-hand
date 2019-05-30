@@ -61,7 +61,7 @@ const Navbar = ({
                 <nav className='navbar bg-dark'>
                     <h1>
                         <Link to='/'>
-                            Helping Hands
+                        <img id="nav-logo" src="hh-logo.svg" alt="Kiwi standing on oval" /> Helping Hands
                         </Link>
                     </h1>
                     {!loading && (
