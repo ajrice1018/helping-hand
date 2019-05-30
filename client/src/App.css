@@ -588,19 +588,23 @@ button {
 
 /* ------------- SCALEDRONE CHAT CSS ------------- */
 
+.custom-chat {
+  margin: 30px 0 30px;
+}
+
 .App {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  height: 80vh;
 }
 
 .App-header {
-  background-color: #262626;
   overflow: visible;
+  text-align: left;
+  max-width: 900px;
   width: 100%;
-  text-align: center;
-  color: white;
+  margin: 20px auto 0;
 }
 
 .Messages-list {
@@ -676,6 +680,7 @@ input {
   border-radius: 8px;
   border: 1px solid orangered;
   flex-grow: 1;
+  min-width: 54%;
 }
 
 button {
@@ -686,6 +691,16 @@ button {
   border: none;
   border-radius: 8px;
   margin-left: 10px;
+}
+
+.Input {
+    padding: 20px 0;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 0;
+    flex-grow: 1;
+    overflow: auto;
 }
 
 /* -------------  END SCALEDRONE CHAT CSS  ------------- */
