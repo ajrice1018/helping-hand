@@ -93,9 +93,7 @@ const VolunteerRegister = ({setAlert, registerVolunteer, isAuthenticated}) => {
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    {/* <LockOutlinedIcon /> */}
-                </Avatar>
+                <img className="register-hand" src="hand-vol.svg" alt="hand icon"></img>
                 <Typography component="h1" variant="h5">
                     Sign up to be a Volunteer
                 </Typography>
