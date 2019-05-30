@@ -507,6 +507,14 @@ button {
   margin-bottom: 20px;
 }
 
+#request-signup {
+  background-color: #BB3C6E;
+}
+
+#volunteer-signup {
+  background-color: #4A9D98;
+}
+
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {

@@ -132,6 +132,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                         </Grid>
                     </Grid>
                     <Button
+                        id="request-signup"
                         type="submit"
                         fullWidth
                         variant="contained"
