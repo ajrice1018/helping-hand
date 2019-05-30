@@ -305,7 +305,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem 2rem;
+  padding: 0.7rem 2rem 0.25rem;
   position: fixed;
   z-index: 1;
   width: 100%;
@@ -333,6 +333,11 @@ button {
 
 .navbar .welcome span {
   margin-right: 0.6rem;
+}
+
+#nav-logo {
+  width: 54px;
+  transform: translate(0px, -3px);
 }
 
 /* Landing Page */
