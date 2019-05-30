@@ -84,9 +84,7 @@ const Login = ({login, isAuthenticated}) => {
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    {/* <LockOutlinedIcon /> */}
-                </Avatar>
+                <img className="register-hand" src="hand-req.svg" alt="hand icon"></img>
                 <Typography component="h1" variant="h5">
                     Sign in as a Requestor
                 </Typography>
@@ -117,6 +115,7 @@ const Login = ({login, isAuthenticated}) => {
                         </Grid>
                     </Grid>
                     <Button
+                        id="request-signup"
                         type="submit"
                         fullWidth
                         variant="contained"
@@ -129,7 +128,7 @@ const Login = ({login, isAuthenticated}) => {
                             <p>
                                 Don't have an account?
                                 <Link to="/register">
-                                    Sign Up!</Link>
+                                     Sign Up!</Link>
                             </p>
                         </Grid>
                     </Grid>
