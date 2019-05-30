@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 
 const ProfileTop = ({
   profile: {
-    status,
-    company,
-    location,
-    website,
-    social,
-    user: { name, avatar }
+    firstName
+    // ,
+    // company,
+    // location,
+    // website,
+    // social,
+    // user: { name, avatar }
   }
 }) => {
   return (
     <div className='profile-top bg-primary p-2'>
-      <img className='round-img my-1' src={avatar} alt='' />
-      <h1 className='large'>{name}</h1>
-      <p className='lead'>
+      {/* <img className='round-img my-1' src={avatar} alt='' /> */}
+      <h1 className='large'>{firstName}</h1>
+      {/* <p className='lead'>
         {status} {company && <span> at {company}</span>}
       </p>
       <p>{location && <span>{location}</span>}</p>
@@ -50,7 +51,7 @@ const ProfileTop = ({
             <i className='fab fa-instagram fa-2x' />
           </a>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
