@@ -94,11 +94,9 @@ const Register = ({setAlert, register, isAuthenticated}) => {
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    {/* <LockOutlinedIcon /> */}
-                </Avatar>
+                <img className="register-hand" src="hand-req.svg" alt="hand icon"></img>
                 <Typography component="h1" variant="h5">
-                    Sign in as a Requestor
+                    Register as a Requestor
                 </Typography>
                 <form className={classes.form} noValidate onSubmit={e => onSubmit(e)}>
                     <Grid container spacing={2}>
