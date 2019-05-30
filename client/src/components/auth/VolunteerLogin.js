@@ -84,9 +84,7 @@ const VolunteerLogin = ({ loginVolunteer, isAuthenticated }) => {
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    {/* <LockOutlinedIcon /> */}
-                </Avatar>
+                <img className="register-hand" src="hand-vol.svg" alt="hand icon"></img>
                 <Typography component="h1" variant="h5">
                     Sign in as a Volunteer
                 </Typography>
@@ -117,6 +115,7 @@ const VolunteerLogin = ({ loginVolunteer, isAuthenticated }) => {
                         </Grid>
                     </Grid>
                     <Button
+                        id="volunteer-signup"
                         type="submit"
                         fullWidth
                         variant="contained"
