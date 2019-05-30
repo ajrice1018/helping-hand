@@ -27,12 +27,6 @@ const Navbar = ({
                 <Link to='/profiles' className="nav-link">Profiles</Link>
             </li>
             <li>
-                <Link to='/dashboard' className="nav-link">
-                    <i className='fas fa-user'/>{' '}
-                    <span className='hide-sm'>Dashboard</span>
-                </Link>
-            </li>
-            <li>
                 <Link to="/faq" className="nav-link">FAQ</Link>
             </li>
             <li>

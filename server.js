@@ -1,23 +1,31 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 5000;
-
+const MONGODB_URI = "mongodb+srv://kelsey123:kelsey123@cluster0-k22l1.mongodb.net/test?retryWrites=true"
 
 // Init Middleware
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-}
+app.use(express.static("client/build"));
+
+
 // Connect database
-const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('MONGODB_URI');
+// const mongoose = require('mongoose');
+// const config = require('config');
+const mongoose = require("mongoose");
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false })
+  .then(() => {
+    console.log("🗄 ==> Successfully connected to mongoDB.");
+  })
+  .catch((err) => {
+    console.log(`Error connecting to mongoDB: ${err}`);
+  });
 
 // Connect to the Mongo DB
-mongoose.connect(db, {useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
+// mongoose.connect(MONGODB_URI, { useCreateIndex: true, useFindAndModify: false});
 
 
 
