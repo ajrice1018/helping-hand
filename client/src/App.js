@@ -15,6 +15,17 @@ import FAQ from './pages/FAQ';
 import SendMessage from './components/message-components/Send-Message';
 
 
+
+import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/profile-forms/CreateProfile';
+import EditProfile from './components/profile-forms/EditProfile';
+import Profiles from './components/profiles/Profiles';
+import Profile from './components/profile/Profile';
+import NotFound from './components/layout/NotFound';
+import PrivateRoute from './components/routing/PrivateRoute';
+
+
+
 // REDUX
 import {Provider} from 'react-redux';
 import store from './store';
@@ -51,6 +62,14 @@ const App = () => {
                             <Route path="/message/:id" component={SendMessage}/>
                             <Route path="/requestor-landing" component={RequestLandingPage}/>
                             <Route path="/volunteer-landing" component={VolunteerLandingPage}/>
+
+
+                            <Route exact path='/profiles' component={Profiles} />
+                            <Route exact path='/profile/:id' component={Profile} />
+                            <PrivateRoute exact path='/dashboard' component={Dashboard} />
+                            <PrivateRoute exact path='/create-profile' component={CreateProfile} />
+                            <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+                            <Route component={NotFound} />
                         </Switch>
                 </Fragment>
             </Router>
