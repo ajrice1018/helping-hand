@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = "mongodb+srv://kelsey123:kelsey123@cluster0-k22l1.mongodb.net/test?retryWrites=true"
+const MONGODB_URI = process.env.MONGODB_URI
 
 // Init Middleware
 app.use(cors());
