@@ -5,7 +5,7 @@
   "proxy": "http://localhost:5000/",
   "dependencies": {
     "@material-ui/core": "^4.0.0-rc.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-datepicker": "^2.5.0",
